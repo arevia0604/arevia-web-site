@@ -6,7 +6,7 @@
     <title>アレヴィアのオフィシャルサイト</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Orbitron & M PLUS Rounded 1c for Soft Pop vibe -->
+    <!-- Google Fonts: Orbitron & M PLUS Rounded 1c for Soft Pop / Yume-kawaii vibe -->
     <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700;900&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
     <!-- FullCalendar -->
     <link href='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css' rel='stylesheet' />
@@ -25,11 +25,11 @@
         .font-cyber {
             font-family: 'Orbitron', sans-serif;
         }
-        /* 抑えめのソフトなボックスシャドウ */
+        /* Soft Pink Box Shadow */
         .pink-box {
             box-shadow: 0 4px 20px rgba(255, 209, 220, 0.15);
         }
-        /* カレンダーのカスタマイズ (#ffd1dcベース) */
+        /* FullCalendar styling (#ffd1dc theme) */
         .fc {
             --fc-border-color: rgba(255, 209, 220, 0.2);
             --fc-page-bg-color: transparent;
@@ -54,10 +54,10 @@
 </head>
 <body class="min-h-screen flex flex-col selection:bg-[#ffd1dc] selection:text-slate-900">
 
-    <!-- ヘッダー / ナビゲーション -->
+    <!-- Header / Navigation -->
     <header class="bg-[#1e1325]/90 backdrop-blur-md border-b border-[#ffd1dc]/30 sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-            <!-- コントローラーアイコン -->
+            <!-- Site Title & Controller Icon -->
             <h1 class="text-base sm:text-lg md:text-xl font-black tracking-wider text-[#ffd1dc] cursor-pointer flex items-center gap-2" onclick="switchTab('home')">
                 <i class="fa-solid fa-gamepad text-[#ffd1dc]"></i> アレヴィアのオフィシャルサイト
             </h1>
@@ -69,20 +69,20 @@
         </div>
     </header>
 
-    <!-- メインコンテンツエリア -->
+    <!-- Main Content Container -->
     <main class="flex-grow max-w-6xl w-full mx-auto px-4 py-8">
 
-        <!-- ================= ホームタブ ================= -->
+        <!-- ================= HOME TAB ================= -->
         <div id="tab-home" class="space-y-10">
 
-            <!-- ヒーロー / WELCOME！ & 配信予定 2カラムレイアウト -->
+            <!-- Hero / Welcome & Schedule Section -->
             <section class="bg-gradient-to-br from-[#2a1a33] via-[#1e1325] to-[#362042] p-6 md:p-10 rounded-3xl border border-[#ffd1dc]/40 shadow-xl relative overflow-hidden pink-box">
                 <div class="absolute -top-10 -left-10 w-40 h-40 bg-[#ffd1dc]/10 rounded-full blur-3xl pointer-events-none"></div>
                 <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-[#ffd1dc]/10 rounded-full blur-3xl pointer-events-none"></div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center relative z-10">
 
-                    <!-- 左側：WELCOME！＆ 自己紹介＆SNSリンク -->
+                    <!-- Left: Welcome & Social Links -->
                     <div class="text-center lg:text-left flex flex-col justify-center space-y-6">
                         <div>
                             <h2 class="text-3xl md:text-5xl font-black mb-4 text-[#ffd1dc] tracking-wide">
@@ -95,7 +95,7 @@
                             </p>
                         </div>
 
-                        <!-- SNSリンクボタン（ツイキャスボタンの色を #98D88F へ変更） -->
+                        <!-- Social Media Links (Twitcasting button updated to #9EC295) -->
                         <div class="flex justify-center lg:justify-start gap-3 flex-wrap">
                             <a href="https://www.youtube.com/channel/UCuDpUcczF7-vZHpUYzHADTw" target="_blank" class="flex items-center gap-2 bg-[#ff0033] hover:bg-red-600 text-white px-5 py-3 rounded-2xl font-black text-sm transition transform hover:-translate-y-0.5 shadow-md">
                                 <i class="fa-brands fa-youtube text-lg text-white"></i> <span class="text-white">YouTube</span>
@@ -103,25 +103,24 @@
                             <a href="https://twitter.com/home?lang=ja" target="_blank" class="flex items-center gap-2 bg-[#202020] hover:bg-black text-white px-5 py-3 rounded-2xl font-black text-sm border border-[#ffd1dc]/30 transition transform hover:-translate-y-0.5 shadow-md">
                                 <i class="fa-brands fa-x-twitter text-lg text-white"></i> <span class="text-white">X</span>
                             </a>
-                            <a href="https://twitcasting.tv/areviafreedomch" target="_blank" class="flex items-center gap-2 bg-[#98D88F] hover:bg-[#86c57d] text-white px-5 py-3 rounded-2xl font-black text-sm transition transform hover:-translate-y-0.5 shadow-md">
+                            <a href="https://twitcasting.tv/areviafreedomch" target="_blank" class="flex items-center gap-2 bg-[#9EC295] hover:bg-[#8bb382] text-white px-5 py-3 rounded-2xl font-black text-sm transition transform hover:-translate-y-0.5 shadow-md">
                                 <i class="fa-solid fa-tower-broadcast text-lg text-white"></i> <span class="text-white">ツイキャス</span>
                             </a>
                         </div>
                     </div>
 
-                    <!-- 右側：配信予定窓 -->
+                    <!-- Right: Stream Schedule Box -->
                     <div class="bg-[#190f1f]/90 p-5 md:p-6 rounded-2xl border border-[#ffd1dc]/40 shadow-inner flex flex-col justify-center">
                         <div class="flex justify-between items-center mb-4">
                             <h3 class="text-base md:text-lg font-black flex items-center text-[#ffd1dc]">
                                 <i class="fa-solid fa-calendar-alt mr-2 text-[#ffd1dc]"></i>配信予定
                             </h3>
-                            <!-- カレンダーページへジャンプするボタン（文字色：白） -->
                             <button onclick="switchTab('calendar')" class="text-xs bg-[#e0a3b5] hover:bg-[#d48ea2] text-white font-bold px-3 py-1.5 rounded-lg transition flex items-center gap-1 shadow">
                                 <i class="fa-solid fa-calendar-days text-white"></i> <span class="text-white">カレンダーを見る</span> <i class="fa-solid fa-chevron-right text-[10px] text-white"></i>
                             </button>
                         </div>
 
-                        <!-- 自動取得した配信予定リスト -->
+                        <!-- Dynamically fetched schedule list -->
                         <div id="schedule-container" class="space-y-3">
                             <div class="p-4 bg-[#2b1b36]/80 rounded-xl border border-[#ffd1dc]/20 text-center">
                                 <p class="text-xs text-rose-200/60 animate-pulse font-cyber">配信予定を自動取得中...</p>
@@ -132,9 +131,9 @@
                 </div>
             </section>
 
-            <!-- お知らせ窓 ＆ 最新ポスト(X)窓 -->
+            <!-- Announcements & Latest X Post Section -->
             <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- お知らせ窓（自動取得対応） -->
+                <!-- Announcements Box -->
                 <div class="bg-[#1e1325]/80 backdrop-blur p-6 rounded-3xl border border-[#ffd1dc]/30 shadow-lg flex flex-col pink-box">
                     <h3 class="text-lg font-black mb-5 flex items-center text-[#ffd1dc]">
                         <i class="fa-solid fa-bullhorn mr-2 text-[#ffd1dc]"></i>お知らせ
@@ -144,7 +143,7 @@
                     </div>
                 </div>
 
-                <!-- 最新X(旧ツイート)窓（自動取得対応） -->
+                <!-- Latest X Post Box -->
                 <div class="bg-[#1e1325]/80 backdrop-blur p-6 rounded-3xl border border-[#ffd1dc]/30 shadow-lg flex flex-col pink-box">
                     <h3 class="text-lg font-black mb-5 flex items-center text-[#ffd1dc]">
                         <i class="fa-brands fa-x-twitter mr-2 text-[#ffd1dc]"></i>最新ポスト
@@ -155,7 +154,7 @@
                 </div>
             </section>
 
-            <!-- YouTubeオススメ動画 -->
+            <!-- YouTube Recommended Video Section -->
             <section class="bg-[#1e1325]/80 backdrop-blur p-6 md:p-8 rounded-3xl border border-[#ffd1dc]/30 shadow-lg pink-box">
                 <h3 class="text-lg font-black mb-6 flex items-center text-[#ffd1dc]">
                     <i class="fa-solid fa-clapperboard mr-2 text-[#ffd1dc]"></i>おすすめ動画
@@ -180,7 +179,7 @@
 
         </div>
 
-        <!-- ================= 配信スケジュールカレンダータブ (別ページ) ================= -->
+        <!-- ================= STREAM CALENDAR TAB ================= -->
         <div id="tab-calendar" class="space-y-6 hidden">
             <div class="bg-[#1e1325]/80 backdrop-blur p-6 md:p-8 rounded-3xl border border-[#ffd1dc]/30 shadow-lg pink-box">
                 <h2 class="text-2xl font-black mb-2 text-[#ffd1dc] flex items-center">
@@ -191,7 +190,7 @@
             </div>
         </div>
 
-        <!-- ================= 交流掲示板タブ ================= -->
+        <!-- ================= COMMUNITY BOARD TAB ================= -->
         <div id="tab-board" class="space-y-6 hidden">
             <div class="bg-[#1e1325]/80 backdrop-blur p-6 md:p-8 rounded-3xl border border-[#ffd1dc]/30 shadow-lg pink-box">
                 <h2 class="text-2xl font-black mb-2 text-[#ffd1dc] flex items-center">
@@ -199,7 +198,7 @@
                 </h2>
                 <p class="text-rose-100/80 text-sm mb-6">自由に感想やメッセージを投稿してね！検索機能で過去ログも一発で見つかるよ♪</p>
 
-                <!-- 投稿フォーム -->
+                <!-- Post Submission Form -->
                 <form id="post-form" class="space-y-4 mb-8 bg-[#2b1b36]/80 p-6 rounded-2xl border border-[#ffd1dc]/30">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
@@ -220,7 +219,7 @@
                     </button>
                 </form>
 
-                <!-- 検索・フィルターコントロール -->
+                <!-- Filter Controls -->
                 <div class="bg-[#2b1b36]/60 p-5 rounded-2xl border border-[#ffd1dc]/20 mb-6 grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div>
                         <label class="block text-xs font-bold text-[#ffd1dc] mb-1">キーワード検索</label>
@@ -236,23 +235,23 @@
                     </div>
                 </div>
 
-                <!-- 投稿一覧表示エリア -->
+                <!-- Posts List -->
                 <div id="posts-container" class="space-y-4">
-                    <!-- JavaScriptで動的生成 -->
+                    <!-- Dynamic rendering -->
                 </div>
             </div>
         </div>
 
     </main>
 
-    <!-- フッター -->
+    <!-- Footer -->
     <footer class="bg-[#1e1325] border-t border-[#ffd1dc]/20 py-8 text-center text-xs text-rose-200/60 font-cyber mt-12">
         <p>&copy; 2026 アレヴィア All Rights Reserved.</p>
     </footer>
 
-    <!-- スクリプト -->
+    <!-- Scripts -->
     <script>
-        // タブ切り替えロジック
+        // Tab switching function
         function switchTab(tabName) {
             const homeTab = document.getElementById('tab-home');
             const calendarTab = document.getElementById('tab-calendar');
@@ -308,13 +307,13 @@
             calendarInstance.render();
 
             loadPosts();
-            fetchLatestYouTubeVideo(); // YouTube最新動画の自動取得
-            fetchLiveSchedules();      // 配信予定の自動取得 ＆ カレンダー連動
-            fetchAnnouncements();      // お知らせの自動取得
-            fetchLatestPost();         // 最新ポストの自動取得
+            fetchLatestYouTubeVideo(); // Load latest YouTube video
+            fetchLiveSchedules();      // Fetch schedules & sync calendar
+            fetchAnnouncements();      // Fetch announcement feeds
+            fetchLatestPost();         // Fetch X post feed
         });
 
-        // お知らせの自動取得機能
+        // Announcement fetch function
         async function fetchAnnouncements() {
             const channelId = "UCuDpUcczF7-vZHpUYzHADTw";
             const rssUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
@@ -324,7 +323,7 @@
             try {
                 const response = await fetch(proxyUrl);
                 const data = await response.json();
-                if (!data.contents) throw new Error("お知らせの取得に失敗しました");
+                if (!data.contents) throw new Error("Failed to fetch announcements");
 
                 const parser = new DOMParser();
                 const xml = parser.parseFromString(data.contents, "text/xml");
@@ -353,7 +352,7 @@
                         `;
                     return;
                 }
-                throw new Error("データなし");
+                throw new Error("No data found");
             } catch (error) {
                 container.innerHTML = `
                         <div class="text-center py-4">
@@ -363,7 +362,7 @@
             }
         }
 
-        // 最新ポスト（X）の自動取得機能
+        // Latest X Post fetch function
         async function fetchLatestPost() {
             const channelId = "UCuDpUcczF7-vZHpUYzHADTw";
             const rssUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
@@ -373,7 +372,7 @@
             try {
                 const response = await fetch(proxyUrl);
                 const data = await response.json();
-                if (!data.contents) throw new Error("ポストデータの取得に失敗しました");
+                if (!data.contents) throw new Error("Failed to fetch post data");
 
                 const parser = new DOMParser();
                 const xml = parser.parseFromString(data.contents, "text/xml");
@@ -394,7 +393,7 @@
                         `;
                     return;
                 }
-                throw new Error("データなし");
+                throw new Error("No data found");
             } catch (error) {
                 container.innerHTML = `
                         <div class="bg-[#2b1b36]/80 p-4 rounded-2xl border border-[#ffd1dc]/20 w-full text-center">
@@ -405,7 +404,7 @@
             }
         }
 
-        // YouTubeのRSSから最新動画・配信情報を取得してスケジュール欄＆カレンダーに反映する関数
+        // Live schedule fetch function
         async function fetchLiveSchedules() {
             const channelId = "UCuDpUcczF7-vZHpUYzHADTw";
             const rssUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
@@ -415,7 +414,7 @@
             try {
                 const response = await fetch(proxyUrl);
                 const data = await response.json();
-                if (!data.contents) throw new Error("スケジュールRSSの取得に失敗しました");
+                if (!data.contents) throw new Error("Failed to fetch schedule RSS");
 
                 const parser = new DOMParser();
                 const xml = parser.parseFromString(data.contents, "text/xml");
@@ -466,12 +465,12 @@
                     }
                     return;
                 }
-                throw new Error("配信エントリが見つかりませんでした");
+                throw new Error("No entries found");
             } catch (error) {
-                console.warn("配信予定の自動取得フォールバック発動:", error);
+                console.warn("Fallback triggered for schedule fetch:", error);
                 scheduleContainer.innerHTML = `
                         <div class="p-4 bg-[#2b1b36]/80 rounded-xl border border-[#ffd1dc]/30 text-center">
-                            <span class="text-xs bg-[#98D88F] text-white px-2 py-0.5 rounded font-black mb-1 inline-block">ツイキャス / YouTube</span>
+                            <span class="text-xs bg-[#9EC295] text-white px-2 py-0.5 rounded font-black mb-1 inline-block">ツイキャス / YouTube</span>
                             <p class="text-xs text-rose-100/80 mt-1">現在、自動取得できる新規の配信予定はありません。</p>
                             <a href="https://twitcasting.tv/areviafreedomch" target="_blank" class="text-xs text-[#ffd1dc] hover:underline mt-2 inline-block">ツイキャス配信ページを確認する →</a>
                         </div>
@@ -479,7 +478,7 @@
             }
         }
 
-        // YouTubeのRSSフィードから最新動画を自動取得する関数
+        // YouTube latest video fetch function
         async function fetchLatestYouTubeVideo() {
             const channelId = "UCuDpUcczF7-vZHpUYzHADTw";
             const rssUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
@@ -491,7 +490,7 @@
             try {
                 const response = await fetch(proxyUrl);
                 const data = await response.json();
-                if (!data.contents) throw new Error("RSSの取得に失敗しました");
+                if (!data.contents) throw new Error("Failed to fetch RSS");
 
                 const parser = new DOMParser();
                 const xml = parser.parseFromString(data.contents, "text/xml");
@@ -511,9 +510,9 @@
                         return;
                     }
                 }
-                throw new Error("動画が見つかりませんでした");
+                throw new Error("No video entry found");
             } catch (error) {
-                console.warn("自動取得フォールバック発動:", error);
+                console.warn("Fallback triggered for YouTube video embed:", error);
                 container.innerHTML = `
                         <iframe class="w-full h-full" src="https://www.youtube.com/embed/videoseries?list=UUuDpUcczF7-vZHpUYzHADTw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     `;
@@ -521,6 +520,7 @@
             }
         }
 
+        // Board post state & logic
         let samplePosts = [
             { id: 1, author: 'サイバー星人', date: '2026-10-18', content: 'サイトのデザインめちゃくちゃカッコいい＆ポップで最高！配信楽しみにしてます！' },
             { id: 2, author: 'フレンドA', date: '2026-10-17', content: '昨日のツイキャス面白かったです。お疲れ様でした〜✨' }
@@ -533,6 +533,10 @@
 
         function savePosts(posts) {
             localStorage.setItem('arevia_cyber_posts', JSON.stringify(posts));
+        }
+
+        function loadPosts() {
+            filterPosts();
         }
 
         function renderPosts(postsToDisplay) {
