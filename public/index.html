@@ -344,24 +344,24 @@
                     }
 
                     container.innerHTML = `
-                            <div class="bg-[#2b1b36]/80 p-4 rounded-2xl border border-[#ffd1dc]/20 w-full flex flex-col space-y-2">
-                                <div class="flex justify-between items-center text-xs text-[#ffd1dc]">
-                                    <span class="bg-[#e0a3b5] text-white px-2 py-0.5 rounded font-bold">${serviceName}</span>
-                                    <span>${dateStr}</span>
+                                <div class="bg-[#2b1b36]/80 p-4 rounded-2xl border border-[#ffd1dc]/20 w-full flex flex-col space-y-2">
+                                    <div class="flex justify-between items-center text-xs text-[#ffd1dc]">
+                                        <span class="bg-[#e0a3b5] text-white px-2 py-0.5 rounded font-bold">${serviceName}</span>
+                                        <span>${dateStr}</span>
+                                    </div>
+                                    <p class="text-xs md:text-sm text-slate-100 font-medium">最新の動画＆配信情報が更新されました：「${escapeHTML(title)}」</p>
+                                    <a href="https://www.youtube.com/watch?v=${videoId}" target="_blank" class="text-xs text-[#ffd1dc] hover:underline font-bold mt-1 inline-block">詳細を見る →</a>
                                 </div>
-                                <p class="text-xs md:text-sm text-slate-100 font-medium">最新の動画＆配信情報が更新されました：「${escapeHTML(title)}」</p>
-                                <a href="https://www.youtube.com/watch?v=${videoId}" target="_blank" class="text-xs text-[#ffd1dc] hover:underline font-bold mt-1 inline-block">詳細を見る →</a>
-                            </div>
-                        `;
+                            `;
                     return;
                 }
                 throw new Error("No data found");
             } catch (error) {
                 container.innerHTML = `
-                        <div class="text-center py-4">
-                            <p class="text-xs text-rose-200/80">現在、新しいお知らせはありません。</p>
-                        </div>
-                    `;
+                            <div class="text-center py-4">
+                                <p class="text-xs text-rose-200/80">現在、新しいお知らせはありません。</p>
+                            </div>
+                        `;
             }
         }
 
@@ -386,24 +386,24 @@
                     const videoId = entry.querySelector("videoId")?.textContent;
 
                     container.innerHTML = `
-                            <div class="bg-[#2b1b36]/80 p-4 rounded-2xl border border-[#ffd1dc]/20 w-full flex flex-col space-y-2">
-                                <div class="flex items-center gap-2 text-xs text-[#ffd1dc] font-bold">
-                                    <i class="fa-brands fa-x-twitter text-white bg-black p-1 rounded-full"></i> アレヴィア (@areviafreedomch)
+                                <div class="bg-[#2b1b36]/80 p-4 rounded-2xl border border-[#ffd1dc]/20 w-full flex flex-col space-y-2">
+                                    <div class="flex items-center gap-2 text-xs text-[#ffd1dc] font-bold">
+                                        <i class="fa-brands fa-x-twitter text-white bg-black p-1 rounded-full"></i> アレヴィア (@areviafreedomch)
+                                    </div>
+                                    <p class="text-xs md:text-sm text-slate-100">「${escapeHTML(title)}」を公開しました！ぜひ観てね♪</p>
+                                    <a href="https://x.com/areviafreedomch" target="_blank" class="text-xs text-[#ffd1dc] hover:underline font-bold inline-block">Xでポストを確認する →</a>
                                 </div>
-                                <p class="text-xs md:text-sm text-slate-100">「${escapeHTML(title)}」を公開しました！ぜひ観てね♪</p>
-                                <a href="https://x.com/areviafreedomch" target="_blank" class="text-xs text-[#ffd1dc] hover:underline font-bold inline-block">Xでポストを確認する →</a>
-                            </div>
-                        `;
+                            `;
                     return;
                 }
                 throw new Error("No data found");
             } catch (error) {
                 container.innerHTML = `
-                        <div class="bg-[#2b1b36]/80 p-4 rounded-2xl border border-[#ffd1dc]/20 w-full text-center">
-                            <p class="text-xs text-rose-200/80 mb-2">現在、表示するポストはありません。</p>
-                            <a href="https://x.com/areviafreedomch" target="_blank" class="text-xs bg-[#e0a3b5] hover:bg-[#d48ea2] text-white font-bold px-3 py-1.5 rounded-lg inline-block shadow">Xを開く</a>
-                        </div>
-                    `;
+                            <div class="bg-[#2b1b36]/80 p-4 rounded-2xl border border-[#ffd1dc]/20 w-full text-center">
+                                <p class="text-xs text-rose-200/80 mb-2">現在、表示するポストはありません。</p>
+                                <a href="https://x.com/areviafreedomch" target="_blank" class="text-xs bg-[#e0a3b5] hover:bg-[#d48ea2] text-white font-bold px-3 py-1.5 rounded-lg inline-block shadow">Xを開く</a>
+                            </div>
+                        `;
             }
         }
 
@@ -442,14 +442,14 @@
                         }
 
                         htmlContent += `
-                                <a href="https://www.youtube.com/watch?v=${videoId}" target="_blank" class="block p-3.5 bg-[#2b1b36]/80 rounded-xl border border-[#ffd1dc]/30 hover:border-[#ffd1dc] transition">
-                                    <div class="flex justify-between items-center mb-1">
-                                        <span class="text-xs bg-[#ff0033] text-white px-2 py-0.5 rounded font-black">YouTube</span>
-                                        <span class="text-xs text-[#ffd1dc] font-cyber">${dateStr}</span>
-                                    </div>
-                                    <p class="text-xs md:text-sm text-slate-100 font-medium truncate">${escapeHTML(title)}</p>
-                                </a>
-                            `;
+                                    <a href="https://www.youtube.com/watch?v=${videoId}" target="_blank" class="block p-3.5 bg-[#2b1b36]/80 rounded-xl border border-[#ffd1dc]/30 hover:border-[#ffd1dc] transition">
+                                        <div class="flex justify-between items-center mb-1">
+                                            <span class="text-xs bg-[#ff0033] text-white px-2 py-0.5 rounded font-black">YouTube</span>
+                                            <span class="text-xs text-[#ffd1dc] font-cyber">${dateStr}</span>
+                                        </div>
+                                        <p class="text-xs md:text-sm text-slate-100 font-medium truncate">${escapeHTML(title)}</p>
+                                    </a>
+                                `;
 
                         if (isoDate) {
                             calendarEvents.push({
@@ -472,12 +472,12 @@
             } catch (error) {
                 console.warn("Fallback triggered for schedule fetch:", error);
                 scheduleContainer.innerHTML = `
-                        <div class="p-4 bg-[#2b1b36]/80 rounded-xl border border-[#ffd1dc]/30 text-center">
-                            <span class="text-xs bg-[#9EC295] text-white px-2 py-0.5 rounded font-black mb-1 inline-block">ツイキャス / YouTube</span>
-                            <p class="text-xs text-rose-100/80 mt-1">現在、自動取得できる新規の配信予定はありません。</p>
-                            <a href="https://twitcasting.tv/areviafreedomch" target="_blank" class="text-xs text-[#ffd1dc] hover:underline mt-2 inline-block">ツイキャス配信ページを確認する →</a>
-                        </div>
-                    `;
+                            <div class="p-4 bg-[#2b1b36]/80 rounded-xl border border-[#ffd1dc]/30 text-center">
+                                <span class="text-xs bg-[#9EC295] text-white px-2 py-0.5 rounded font-black mb-1 inline-block">ツイキャス / YouTube</span>
+                                <p class="text-xs text-rose-100/80 mt-1">現在、自動取得できる新規の配信予定はありません。</p>
+                                <a href="https://twitcasting.tv/areviafreedomch" target="_blank" class="text-xs text-[#ffd1dc] hover:underline mt-2 inline-block">ツイキャス配信ページを確認する →</a>
+                            </div>
+                        `;
             }
         }
 
@@ -505,8 +505,8 @@
 
                     if (videoId) {
                         container.innerHTML = `
-                                <iframe class="w-full h-full" src="https://www.youtube.com/embed/${videoId}" title="${videoTitle}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                            `;
+                                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/${videoId}" title="${videoTitle}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                `;
                         if (videoTitle) {
                             titleElement.textContent = videoTitle;
                         }
@@ -517,8 +517,8 @@
             } catch (error) {
                 console.warn("Fallback triggered for YouTube video embed:", error);
                 container.innerHTML = `
-                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/videoseries?list=UUuDpUcczF7-vZHpUYzHADTw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    `;
+                            <iframe class="w-full h-full" src="https://www.youtube.com/embed/videoseries?list=UUuDpUcczF7-vZHpUYzHADTw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        `;
                 titleElement.textContent = "【最新作】チャンネルおすすめハイライト映像";
             }
         }
@@ -550,14 +550,14 @@
             }
 
             container.innerHTML = postsToDisplay.map(post => `
-                    <div class="bg-[#1e1325]/90 p-5 rounded-2xl border border-[#ffd1dc]/30 shadow flex flex-col space-y-2">
-                        <div class="flex justify-between items-center text-xs text-rose-200/60 border-b border-[#ffd1dc]/20 pb-2">
-                            <span class="font-bold text-[#ffd1dc] text-sm flex items-center"><i class="fa-solid fa-user-astronaut mr-1 text-[#ffd1dc]"></i>${escapeHTML(post.author)}</span>
-                            <span class="font-cyber"><i class="fa-regular fa-calendar mr-1 text-[#ffd1dc]"></i>${post.date}</span>
+                        <div class="bg-[#1e1325]/90 p-5 rounded-2xl border border-[#ffd1dc]/30 shadow flex flex-col space-y-2">
+                            <div class="flex justify-between items-center text-xs text-rose-200/60 border-b border-[#ffd1dc]/20 pb-2">
+                                <span class="font-bold text-[#ffd1dc] text-sm flex items-center"><i class="fa-solid fa-user-astronaut mr-1 text-[#ffd1dc]"></i>${escapeHTML(post.author)}</span>
+                                <span class="font-cyber"><i class="fa-regular fa-calendar mr-1 text-[#ffd1dc]"></i>${post.date}</span>
+                            </div>
+                            <p class="text-slate-100 text-sm whitespace-pre-wrap">${escapeHTML(post.content)}</p>
                         </div>
-                        <p class="text-slate-100 text-sm whitespace-pre-wrap">${escapeHTML(post.content)}</p>
-                    </div>
-                `).join('');
+                    `).join('');
         }
 
         document.getElementById('post-form').addEventListener('submit', function (e) {
