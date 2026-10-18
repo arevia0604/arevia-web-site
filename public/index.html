@@ -311,7 +311,7 @@
             fetchLatestPost();
         });
 
-        // お知らせ自動取得（「詳細を見る →」を白文字化）
+        // お知らせ自動取得
         async function fetchAnnouncements() {
             const channelId = "UCuDpUcczF7-vZHpUYzHADTw";
             const rssUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
@@ -360,7 +360,7 @@
             }
         }
 
-        // 最新ポスト（X）の自動取得（「ポストを確認する」へテキスト変更＆白文字化）
+        // 最新ポスト（X）の自動取得
         async function fetchLatestPost() {
             const channelId = "UCuDpUcczF7-vZHpUYzHADTw";
             const rssUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
