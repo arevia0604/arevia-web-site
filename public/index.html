@@ -95,7 +95,7 @@
                             </p>
                         </div>
 
-                        <!-- SNSリンクボタン（文字色：白） -->
+                        <!-- SNSリンクボタン（ツイキャスボタンの色を #98D88F へ変更） -->
                         <div class="flex justify-center lg:justify-start gap-3 flex-wrap">
                             <a href="https://www.youtube.com/channel/UCuDpUcczF7-vZHpUYzHADTw" target="_blank" class="flex items-center gap-2 bg-[#ff0033] hover:bg-red-600 text-white px-5 py-3 rounded-2xl font-black text-sm transition transform hover:-translate-y-0.5 shadow-md">
                                 <i class="fa-brands fa-youtube text-lg text-white"></i> <span class="text-white">YouTube</span>
@@ -103,7 +103,7 @@
                             <a href="https://twitter.com/home?lang=ja" target="_blank" class="flex items-center gap-2 bg-[#202020] hover:bg-black text-white px-5 py-3 rounded-2xl font-black text-sm border border-[#ffd1dc]/30 transition transform hover:-translate-y-0.5 shadow-md">
                                 <i class="fa-brands fa-x-twitter text-lg text-white"></i> <span class="text-white">X</span>
                             </a>
-                            <a href="https://twitcasting.tv/areviafreedomch" target="_blank" class="flex items-center gap-2 bg-[#7c3aed] hover:bg-purple-600 text-white px-5 py-3 rounded-2xl font-black text-sm transition transform hover:-translate-y-0.5 shadow-md">
+                            <a href="https://twitcasting.tv/areviafreedomch" target="_blank" class="flex items-center gap-2 bg-[#98D88F] hover:bg-[#86c57d] text-white px-5 py-3 rounded-2xl font-black text-sm transition transform hover:-translate-y-0.5 shadow-md">
                                 <i class="fa-solid fa-tower-broadcast text-lg text-white"></i> <span class="text-white">ツイキャス</span>
                             </a>
                         </div>
@@ -314,7 +314,7 @@
             fetchLatestPost();         // 最新ポストの自動取得
         });
 
-        // お知らせの自動取得機能（YouTubeチャンネル説明文やRSSの最新情報を活用）
+        // お知らせの自動取得機能
         async function fetchAnnouncements() {
             const channelId = "UCuDpUcczF7-vZHpUYzHADTw";
             const rssUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
@@ -363,7 +363,7 @@
             }
         }
 
-        // 最新ポスト（X）の自動取得機能（YouTube最新アクティビティ連動フォールバック付き）
+        // 最新ポスト（X）の自動取得機能
         async function fetchLatestPost() {
             const channelId = "UCuDpUcczF7-vZHpUYzHADTw";
             const rssUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
@@ -471,7 +471,7 @@
                 console.warn("配信予定の自動取得フォールバック発動:", error);
                 scheduleContainer.innerHTML = `
                         <div class="p-4 bg-[#2b1b36]/80 rounded-xl border border-[#ffd1dc]/30 text-center">
-                            <span class="text-xs bg-[#7c3aed] text-white px-2 py-0.5 rounded font-black mb-1 inline-block">ツイキャス / YouTube</span>
+                            <span class="text-xs bg-[#98D88F] text-white px-2 py-0.5 rounded font-black mb-1 inline-block">ツイキャス / YouTube</span>
                             <p class="text-xs text-rose-100/80 mt-1">現在、自動取得できる新規の配信予定はありません。</p>
                             <a href="https://twitcasting.tv/areviafreedomch" target="_blank" class="text-xs text-[#ffd1dc] hover:underline mt-2 inline-block">ツイキャス配信ページを確認する →</a>
                         </div>
