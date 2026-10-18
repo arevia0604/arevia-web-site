@@ -6,7 +6,7 @@
     <title>アレヴィアのオフィシャルサイト</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Orbitron & M PLUS Rounded 1c for Cyber & Pop vibe -->
+    <!-- Google Fonts: Orbitron & M PLUS Rounded 1c for Soft Pop vibe -->
     <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700;900&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
     <!-- FullCalendar -->
     <link href='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css' rel='stylesheet' />
@@ -17,63 +17,54 @@
     <style>
         body {
             font-family: 'M PLUS Rounded 1c', sans-serif;
-            background-color: #0b061a;
-            background-image: radial-gradient(circle at 10% 20%, rgba(255, 0, 128, 0.15) 0%, transparent 40%), radial-gradient(circle at 90% 80%, rgba(0, 240, 255, 0.15) 0%, transparent 40%);
-            color: #f1f5f9;
+            background-color: #1a101f;
+            background-image: radial-gradient(circle at 10% 20%, rgba(255, 209, 220, 0.15) 0%, transparent 40%), radial-gradient(circle at 90% 80%, rgba(255, 209, 220, 0.10) 0%, transparent 40%);
+            color: #fff0f5;
         }
 
         .font-cyber {
             font-family: 'Orbitron', sans-serif;
         }
-        /* ネオン発光エフェクト */
-        .neon-pink {
-            text-shadow: 0 0 10px #ff007f, 0 0 20px #ff007f, 0 0 40px #ff007f;
+        /* 抑えめのソフトなボックスシャドウ */
+        .pink-box {
+            box-shadow: 0 4px 20px rgba(255, 209, 220, 0.15);
         }
-
-        .neon-cyan {
-            text-shadow: 0 0 10px #00f0ff, 0 0 20px #00f0ff, 0 0 40px #00f0ff;
-        }
-
-        .neon-box-pink {
-            box-shadow: 0 0 15px rgba(255, 0, 127, 0.4), inset 0 0 15px rgba(255, 0, 127, 0.2);
-        }
-
-        .neon-box-cyan {
-            box-shadow: 0 0 15px rgba(0, 240, 255, 0.4), inset 0 0 15px rgba(0, 240, 255, 0.2);
-        }
-
-        .neon-box-purple {
-            box-shadow: 0 0 15px rgba(168, 85, 247, 0.4);
-        }
-        /* カレンダーのサイバーカスタマイズ */
+        /* カレンダーのカスタマイズ (#ffd1dcベース) */
         .fc {
-            --fc-border-color: #3b0764;
+            --fc-border-color: rgba(255, 209, 220, 0.2);
             --fc-page-bg-color: transparent;
-            --fc-neutral-bg-color: #1e1b4b;
-            --fc-today-bg-color: rgba(236, 72, 153, 0.2);
+            --fc-neutral-bg-color: #26172d;
+            --fc-today-bg-color: rgba(255, 209, 220, 0.25);
         }
 
         .fc-theme-standard td, .fc-theme-standard th {
-            border-color: #3b0764 !important;
+            border-color: rgba(255, 209, 220, 0.2) !important;
         }
 
         .fc-col-header-cell-cushion, .fc-daygrid-day-number {
-            color: #f472b6 !important;
+            color: #ffd1dc !important;
+        }
+
+        .fc-button-primary {
+            background-color: #e0a3b5 !important;
+            border-color: #ffd1dc !important;
+            color: #ffffff !important;
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col selection:bg-pink-500 selection:text-white">
+<body class="min-h-screen flex flex-col selection:bg-[#ffd1dc] selection:text-slate-900">
 
     <!-- ヘッダー / ナビゲーション -->
-    <header class="bg-[#120826]/90 backdrop-blur-md border-b-2 border-fuchsia-500/50 sticky top-0 z-50">
+    <header class="bg-[#1e1325]/90 backdrop-blur-md border-b border-[#ffd1dc]/30 sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-            <h1 class="text-base sm:text-lg md:text-xl font-black tracking-wider text-cyan-400 cursor-pointer neon-cyan flex items-center gap-2" onclick="switchTab('home')">
-                <i class="fa-solid fa-bolt text-pink-500 animate-pulse"></i> アレヴィアのオフィシャルサイト
+            <!-- ネオンなしのすっきりとしたタイトル -->
+            <h1 class="text-base sm:text-lg md:text-xl font-black tracking-wider text-[#ffd1dc] cursor-pointer flex items-center gap-2" onclick="switchTab('home')">
+                <i class="fa-solid fa-bolt text-[#ffd1dc]"></i> アレヴィアのオフィシャルサイト
             </h1>
             <nav class="space-x-1 sm:space-x-3">
-                <button onclick="switchTab('home')" id="nav-home" class="px-3 py-2 rounded-xl transition font-bold bg-gradient-to-r from-pink-500 to-purple-600 text-white shadow-lg neon-box-pink text-xs sm:text-sm">ホーム</button>
-                <button onclick="switchTab('calendar')" id="nav-calendar" class="px-3 py-2 rounded-xl transition font-bold bg-[#1e1b4b] text-cyan-300 hover:bg-purple-900 border border-cyan-500/40 text-xs sm:text-sm">カレンダー</button>
-                <button onclick="switchTab('board')" id="nav-board" class="px-3 py-2 rounded-xl transition font-bold bg-[#1e1b4b] text-cyan-300 hover:bg-purple-900 border border-cyan-500/40 text-xs sm:text-sm">交流掲示板</button>
+                <button onclick="switchTab('home')" id="nav-home" class="px-3 py-2 rounded-xl transition font-bold bg-[#e0a3b5] text-white shadow-md text-xs sm:text-sm">ホーム</button>
+                <button onclick="switchTab('calendar')" id="nav-calendar" class="px-3 py-2 rounded-xl transition font-bold bg-[#2e1c38] text-white hover:bg-[#3d254a] border border-[#ffd1dc]/30 text-xs sm:text-sm">カレンダー</button>
+                <button onclick="switchTab('board')" id="nav-board" class="px-3 py-2 rounded-xl transition font-bold bg-[#2e1c38] text-white hover:bg-[#3d254a] border border-[#ffd1dc]/30 text-xs sm:text-sm">交流掲示板</button>
             </nav>
         </div>
     </header>
@@ -85,55 +76,55 @@
         <div id="tab-home" class="space-y-10">
 
             <!-- ヒーロー / WELCOME！ & 配信予定 2カラムレイアウト -->
-            <section class="bg-gradient-to-br from-[#1e1b4b] via-[#120826] to-[#2e1065] p-6 md:p-10 rounded-3xl border-2 border-fuchsia-500/60 shadow-2xl relative overflow-hidden neon-box-purple">
-                <div class="absolute -top-10 -left-10 w-40 h-40 bg-pink-500/20 rounded-full blur-3xl pointer-events-none"></div>
-                <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-cyan-500/20 rounded-full blur-3xl pointer-events-none"></div>
+            <section class="bg-gradient-to-br from-[#2a1a33] via-[#1e1325] to-[#362042] p-6 md:p-10 rounded-3xl border border-[#ffd1dc]/40 shadow-xl relative overflow-hidden pink-box">
+                <div class="absolute -top-10 -left-10 w-40 h-40 bg-[#ffd1dc]/10 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-[#ffd1dc]/10 rounded-full blur-3xl pointer-events-none"></div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center relative z-10">
 
                     <!-- 左側：WELCOME！＆ 自己紹介＆SNSリンク -->
                     <div class="text-center lg:text-left flex flex-col justify-center space-y-6">
                         <div>
-                            <h2 class="text-3xl md:text-5xl font-black mb-4 text-white tracking-wide">
+                            <h2 class="text-3xl md:text-5xl font-black mb-4 text-[#ffd1dc] tracking-wide">
                                 Welcome！
                             </h2>
-                            <p class="text-pink-200/90 text-sm md:text-base leading-relaxed whitespace-pre-line">
+                            <p class="text-rose-100/90 text-sm md:text-base leading-relaxed whitespace-pre-line">
                                 配信者兼クリエイター アレヴィアのオフィシャルサイト！
                                 配信に関する最新情報や交流掲示板を完備。
                                 いつでもあなたへ【楽しい】をお届けします♪
                             </p>
                         </div>
 
-                        <!-- SNSリンクボタン -->
+                        <!-- SNSリンクボタン（文字色：白） -->
                         <div class="flex justify-center lg:justify-start gap-3 flex-wrap">
-                            <a href="https://www.youtube.com/channel/UCuDpUcczF7-vZHpUYzHADTw" target="_blank" class="flex items-center gap-2 bg-[#ff0033] hover:bg-red-600 text-white px-5 py-3 rounded-2xl font-black text-sm shadow-[0_0_15px_rgba(255,0,51,0.5)] transition transform hover:-translate-y-1">
-                                <i class="fa-brands fa-youtube text-lg"></i> YouTube
+                            <a href="https://www.youtube.com/channel/UCuDpUcczF7-vZHpUYzHADTw" target="_blank" class="flex items-center gap-2 bg-[#ff0033] hover:bg-red-600 text-white px-5 py-3 rounded-2xl font-black text-sm transition transform hover:-translate-y-0.5 shadow-md">
+                                <i class="fa-brands fa-youtube text-lg text-white"></i> <span class="text-white">YouTube</span>
                             </a>
-                            <a href="https://twitter.com/home?lang=ja" target="_blank" class="flex items-center gap-2 bg-[#00f0ff] hover:bg-cyan-400 text-slate-950 px-5 py-3 rounded-2xl font-black text-sm shadow-[0_0_15px_rgba(0,240,255,0.5)] transition transform hover:-translate-y-1">
-                                <i class="fa-brands fa-twitter text-lg"></i> Twitter
+                            <a href="https://twitter.com/home?lang=ja" target="_blank" class="flex items-center gap-2 bg-[#202020] hover:bg-black text-white px-5 py-3 rounded-2xl font-black text-sm border border-[#ffd1dc]/30 transition transform hover:-translate-y-0.5 shadow-md">
+                                <i class="fa-brands fa-x-twitter text-lg text-white"></i> <span class="text-white">X</span>
                             </a>
-                            <a href="https://twitcasting.tv/areviafreedomch" target="_blank" class="flex items-center gap-2 bg-[#7c3aed] hover:bg-purple-600 text-white px-5 py-3 rounded-2xl font-black text-sm shadow-[0_0_15px_rgba(124,58,237,0.5)] transition transform hover:-translate-y-1">
-                                <i class="fa-solid fa-tower-broadcast text-lg"></i> ツイキャス
+                            <a href="https://twitcasting.tv/areviafreedomch" target="_blank" class="flex items-center gap-2 bg-[#7c3aed] hover:bg-purple-600 text-white px-5 py-3 rounded-2xl font-black text-sm transition transform hover:-translate-y-0.5 shadow-md">
+                                <i class="fa-solid fa-tower-broadcast text-lg text-white"></i> <span class="text-white">ツイキャス</span>
                             </a>
                         </div>
                     </div>
 
-                    <!-- 右側：配信予定窓（YouTube等の自動取得対応） -->
-                    <div class="bg-[#120826]/90 p-5 md:p-6 rounded-2xl border-2 border-cyan-500/40 shadow-inner neon-box-cyan flex flex-col justify-center">
+                    <!-- 右側：配信予定窓 -->
+                    <div class="bg-[#190f1f]/90 p-5 md:p-6 rounded-2xl border border-[#ffd1dc]/40 shadow-inner flex flex-col justify-center">
                         <div class="flex justify-between items-center mb-4">
-                            <h3 class="text-base md:text-lg font-black flex items-center text-cyan-400 font-cyber">
-                                <i class="fa-solid fa-calendar-alt mr-2 text-pink-500"></i>配信予定
+                            <h3 class="text-base md:text-lg font-black flex items-center text-[#ffd1dc]">
+                                <i class="fa-solid fa-calendar-alt mr-2 text-[#ffd1dc]"></i>配信予定
                             </h3>
-                            <!-- カレンダーページへジャンプするボタン -->
-                            <button onclick="switchTab('calendar')" class="text-xs bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold px-3 py-1.5 rounded-lg transition flex items-center gap-1 shadow">
-                                <i class="fa-solid fa-calendar-days"></i> カレンダーを見る <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                            <!-- カレンダーページへジャンプするボタン（文字色：白） -->
+                            <button onclick="switchTab('calendar')" class="text-xs bg-[#e0a3b5] hover:bg-[#d48ea2] text-white font-bold px-3 py-1.5 rounded-lg transition flex items-center gap-1 shadow">
+                                <i class="fa-solid fa-calendar-days text-white"></i> <span class="text-white">カレンダーを見る</span> <i class="fa-solid fa-chevron-right text-[10px] text-white"></i>
                             </button>
                         </div>
 
-                        <!-- 自動取得した配信予定リストがここに挿入されます -->
+                        <!-- 自動取得した配信予定リスト -->
                         <div id="schedule-container" class="space-y-3">
-                            <div class="p-4 bg-[#1e1b4b]/80 rounded-xl border border-cyan-500/30 text-center">
-                                <p class="text-xs text-slate-400 animate-pulse font-cyber">配信予定を自動取得中...</p>
+                            <div class="p-4 bg-[#2b1b36]/80 rounded-xl border border-[#ffd1dc]/20 text-center">
+                                <p class="text-xs text-rose-200/60 animate-pulse font-cyber">配信予定を自動取得中...</p>
                             </div>
                         </div>
                     </div>
@@ -141,49 +132,49 @@
                 </div>
             </section>
 
-            <!-- お知らせ窓 ＆ 最新ツイート窓 -->
+            <!-- お知らせ窓 ＆ 最新ツイート(X)窓 -->
             <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- お知らせ窓（空の状態） -->
-                <div class="bg-[#120826]/80 backdrop-blur p-6 rounded-3xl border-2 border-pink-500/40 shadow-xl neon-box-pink flex flex-col">
-                    <h3 class="text-lg font-black mb-5 flex items-center text-pink-400 font-cyber">
-                        <i class="fa-solid fa-bullhorn mr-2 text-cyan-400"></i>お知らせ
+                <!-- お知らせ窓 -->
+                <div class="bg-[#1e1325]/80 backdrop-blur p-6 rounded-3xl border border-[#ffd1dc]/30 shadow-lg flex flex-col pink-box">
+                    <h3 class="text-lg font-black mb-5 flex items-center text-[#ffd1dc]">
+                        <i class="fa-solid fa-bullhorn mr-2 text-[#ffd1dc]"></i>お知らせ
                     </h3>
                     <div class="flex-grow flex items-center justify-center py-8">
-                        <p class="text-xs md:text-sm text-slate-400 font-cyber">現在、お知らせはありません。</p>
+                        <p class="text-xs md:text-sm text-rose-200/60 font-cyber">現在、お知らせはありません。</p>
                     </div>
                 </div>
 
-                <!-- 最新ツイート窓（空の状態） -->
-                <div class="bg-[#120826]/80 backdrop-blur p-6 rounded-3xl border-2 border-purple-500/40 shadow-xl neon-box-purple flex flex-col">
-                    <h3 class="text-lg font-black mb-5 flex items-center text-purple-300 font-cyber">
-                        <i class="fa-brands fa-twitter mr-2 text-cyan-400"></i>最新ツイート
+                <!-- 最新X(旧ツイート)窓 -->
+                <div class="bg-[#1e1325]/80 backdrop-blur p-6 rounded-3xl border border-[#ffd1dc]/30 shadow-lg flex flex-col pink-box">
+                    <h3 class="text-lg font-black mb-5 flex items-center text-[#ffd1dc]">
+                        <i class="fa-brands fa-x-twitter mr-2 text-[#ffd1dc]"></i>最新ポスト
                     </h3>
-                    <div class="bg-[#1e1b4b]/80 p-5 rounded-2xl border border-cyan-500/30 flex-grow flex flex-col items-center justify-center text-center py-8">
-                        <p class="text-sm text-slate-400 font-cyber mb-4">現在、表示するツイートはありません。</p>
-                        <a href="https://twitter.com/home?lang=ja" target="_blank" class="text-xs bg-[#00f0ff]/20 hover:bg-[#00f0ff]/30 text-cyan-300 border border-cyan-500/40 font-bold px-4 py-2 rounded-xl transition flex items-center gap-1">
-                            Twitterを開く <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                    <div class="bg-[#2b1b36]/80 p-5 rounded-2xl border border-[#ffd1dc]/20 flex-grow flex flex-col items-center justify-center text-center py-8">
+                        <p class="text-sm text-rose-200/60 font-cyber mb-4">現在、表示するポストはありません。</p>
+                        <a href="https://twitter.com/home?lang=ja" target="_blank" class="text-xs bg-[#e0a3b5] hover:bg-[#d48ea2] text-white font-bold px-4 py-2 rounded-xl transition flex items-center gap-1 shadow">
+                            <span class="text-white">Xを開く</span> <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-white"></i>
                         </a>
                     </div>
                 </div>
             </section>
 
             <!-- YouTubeオススメ動画 -->
-            <section class="bg-[#120826]/80 backdrop-blur p-6 md:p-8 rounded-3xl border-2 border-red-500/40 shadow-xl">
-                <h3 class="text-lg font-black mb-6 flex items-center text-red-400 font-cyber">
-                    <i class="fa-solid fa-clapperboard mr-2 text-pink-500"></i>おすすめ動画
+            <section class="bg-[#1e1325]/80 backdrop-blur p-6 md:p-8 rounded-3xl border border-[#ffd1dc]/30 shadow-lg pink-box">
+                <h3 class="text-lg font-black mb-6 flex items-center text-[#ffd1dc]">
+                    <i class="fa-solid fa-clapperboard mr-2 text-[#ffd1dc]"></i>おすすめ動画
                 </h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
-                    <div id="youtube-player-container" class="aspect-video bg-black rounded-2xl overflow-hidden border-2 border-red-500/50 shadow-[0_0_15px_rgba(255,0,0,0.3)] flex items-center justify-center">
-                        <p class="text-xs text-slate-400 animate-pulse font-cyber">最新動画を自動読み込み中...</p>
+                    <div id="youtube-player-container" class="aspect-video bg-black/60 rounded-2xl overflow-hidden border border-[#ffd1dc]/30 flex items-center justify-center">
+                        <p class="text-xs text-rose-200/60 animate-pulse font-cyber">最新動画を自動読み込み中...</p>
                     </div>
                     <div class="flex flex-col justify-center space-y-4">
-                        <span class="text-xs bg-red-500 text-white px-3 py-1 rounded-md font-black w-max font-cyber shadow">PICK UP</span>
+                        <span class="text-xs bg-[#e0a3b5] text-white px-3 py-1 rounded-md font-black w-max shadow">PICK UP</span>
                         <h4 id="youtube-title" class="text-xl font-black text-white">チャンネル最新動画を自動取得中...</h4>
-                        <p class="text-sm text-slate-300 leading-relaxed whitespace-pre-line">
+                        <p class="text-sm text-rose-100/90 leading-relaxed whitespace-pre-line">
                             これまでの配信や動画の中から、特におすすめの見どころをピックアップ！
                             チャンネル登録・高評価よろしくお願いします♪
                         </p>
-                        <a href="https://www.youtube.com/channel/UCuDpUcczF7-vZHpUYzHADTw" target="_blank" class="text-cyan-400 hover:text-cyan-300 font-bold text-sm flex items-center gap-1 w-max">
+                        <a href="https://www.youtube.com/channel/UCuDpUcczF7-vZHpUYzHADTw" target="_blank" class="text-[#ffd1dc] hover:underline font-bold text-sm flex items-center gap-1 w-max">
                             YouTubeチャンネルで他の動画を見る <i class="fa-solid fa-chevron-right text-xs"></i>
                         </a>
                     </div>
@@ -194,333 +185,44 @@
 
         <!-- ================= 配信スケジュールカレンダータブ (別ページ) ================= -->
         <div id="tab-calendar" class="space-y-6 hidden">
-            <div class="bg-[#120826]/80 backdrop-blur p-6 md:p-8 rounded-3xl border-2 border-purple-500/50 shadow-xl neon-box-purple">
-                <h2 class="text-2xl font-black mb-2 text-purple-300 font-cyber flex items-center">
-                    <i class="fa-solid fa-calendar-days mr-2 text-pink-500"></i>配信スケジュールカレンダー
+            <div class="bg-[#1e1325]/80 backdrop-blur p-6 md:p-8 rounded-3xl border border-[#ffd1dc]/30 shadow-lg pink-box">
+                <h2 class="text-2xl font-black mb-2 text-[#ffd1dc] flex items-center">
+                    <i class="fa-solid fa-calendar-days mr-2 text-[#ffd1dc]"></i>配信スケジュールカレンダー
                 </h2>
-                <p class="text-slate-300 text-sm mb-6">今後の配信予定はこちらのカレンダーからチェックしてね！</p>
-                <div id="calendar" class="bg-[#1e1b4b]/60 p-4 rounded-2xl text-slate-100 text-sm border border-purple-500/30"></div>
+                <p class="text-rose-100/80 text-sm mb-6">今後の配信予定はこちらのカレンダーからチェックしてね！</p>
+                <div id="calendar" class="bg-[#2a1a33]/60 p-4 rounded-2xl text-slate-100 text-sm border border-[#ffd1dc]/20"></div>
             </div>
         </div>
 
         <!-- ================= 交流掲示板タブ ================= -->
         <div id="tab-board" class="space-y-6 hidden">
-            <div class="bg-[#120826]/80 backdrop-blur p-6 md:p-8 rounded-3xl border-2 border-cyan-500/50 shadow-xl neon-box-cyan">
-                <h2 class="text-2xl font-black mb-2 text-cyan-400 font-cyber flex items-center">
-                    <i class="fa-solid fa-comments mr-2 text-pink-500"></i>交流掲示板
+            <div class="bg-[#1e1325]/80 backdrop-blur p-6 md:p-8 rounded-3xl border border-[#ffd1dc]/30 shadow-lg pink-box">
+                <h2 class="text-2xl font-black mb-2 text-[#ffd1dc] flex items-center">
+                    <i class="fa-solid fa-comments mr-2 text-[#ffd1dc]"></i>交流掲示板
                 </h2>
-                <p class="text-slate-300 text-sm mb-6">自由に感想やメッセージを投稿してね！検索機能で過去ログも一発で見つかるよ♪</p>
+                <p class="text-rose-100/80 text-sm mb-6">自由に感想やメッセージを投稿してね！検索機能で過去ログも一発で見つかるよ♪</p>
 
                 <!-- 投稿フォーム -->
-                <form id="post-form" class="space-y-4 mb-8 bg-[#1e1b4b]/80 p-6 rounded-2xl border-2 border-purple-500/40">
+                <form id="post-form" class="space-y-4 mb-8 bg-[#2b1b36]/80 p-6 rounded-2xl border border-[#ffd1dc]/30">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                            <label class="block text-xs font-bold text-pink-400 mb-1 font-cyber">お名前 (ユーザー名)</label>
-                            <input type="text" id="author-input" required placeholder="例: 自由な旅人" class="w-full bg-[#120826] border border-cyan-500/40 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-pink-500 transition">
+                            <label class="block text-xs font-bold text-[#ffd1dc] mb-1">お名前 (ユーザー名)</label>
+                            <input type="text" id="author-input" required placeholder="例: 自由な旅人" class="w-full bg-[#1a101f] border border-[#ffd1dc]/30 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-[#ffd1dc] transition">
                         </div>
                         <div>
-                            <label class="block text-xs font-bold text-pink-400 mb-1 font-cyber">日付</label>
-                            <input type="date" id="date-input" required class="w-full bg-[#120826] border border-cyan-500/40 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-pink-500 transition">
+                            <label class="block text-xs font-bold text-[#ffd1dc] mb-1">日付</label>
+                            <input type="date" id="date-input" required class="w-full bg-[#1a101f] border border-[#ffd1dc]/30 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-[#ffd1dc] transition">
                         </div>
                     </div>
                     <div>
-                        <label class="block text-xs font-bold text-pink-400 mb-1 font-cyber">メッセージ内容</label>
-                        <textarea id="content-input" rows="3" required placeholder="配信の感想やメッセージをどうぞ！" class="w-full bg-[#120826] border border-cyan-500/40 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-pink-500 transition"></textarea>
+                        <label class="block text-xs font-bold text-[#ffd1dc] mb-1">メッセージ内容</label>
+                        <textarea id="content-input" rows="3" required placeholder="配信の感想やメッセージをどうぞ！" class="w-full bg-[#1a101f] border border-[#ffd1dc]/30 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-[#ffd1dc] transition"></textarea>
                     </div>
-                    <button type="submit" class="bg-gradient-to-r from-pink-500 to-cyan-400 hover:from-pink-600 hover:to-cyan-500 text-slate-950 font-black px-8 py-3 rounded-xl text-sm transition shadow-[0_0_15px_rgba(236,72,153,0.5)]">
-                        <i class="fa-solid fa-paper-plane mr-1"></i> 投稿する！
+                    <!-- ボタン文字色：白 -->
+                    <button type="submit" class="bg-[#e0a3b5] hover:bg-[#d48ea2] text-white font-black px-8 py-3 rounded-xl text-sm transition shadow-md">
+                        <i class="fa-solid fa-paper-plane mr-1 text-white"></i> <span class="text-white">投稿する！</span>
                     </button>
                 </form>
 
                 <!-- 検索・フィルターコントロール -->
-                <div class="bg-[#1e1b4b]/60 p-5 rounded-2xl border border-cyan-500/30 mb-6 grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div>
-                        <label class="block text-xs font-bold text-cyan-300 mb-1 font-cyber">キーワード検索</label>
-                        <input type="text" id="search-keyword" placeholder="キーワードで絞り込み..." oninput="filterPosts()" class="w-full bg-[#120826] border border-slate-700 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-cyan-400">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold text-cyan-300 mb-1 font-cyber">ユーザー名で検索</label>
-                        <input type="text" id="search-author" placeholder="名前で絞り込み..." oninput="filterPosts()" class="w-full bg-[#120826] border border-slate-700 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-cyan-400">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold text-cyan-300 mb-1 font-cyber">日付で検索</label>
-                        <input type="date" id="search-date" onchange="filterPosts()" class="w-full bg-[#120826] border border-slate-700 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-cyan-400">
-                    </div>
-                </div>
-
-                <!-- 投稿一覧表示エリア -->
-                <div id="posts-container" class="space-y-4">
-                    <!-- JavaScriptで動的生成 -->
-                </div>
-            </div>
-        </div>
-
-    </main>
-
-    <!-- フッター -->
-    <footer class="bg-[#120826] border-t border-fuchsia-500/30 py-8 text-center text-xs text-slate-400 mt-12 font-cyber">
-        <p>&copy; 2026 アレヴィア All Rights Reserved.</p>
-    </footer>
-
-    <!-- スクリプト -->
-    <script>
-        // タブ切り替えロジック
-        function switchTab(tabName) {
-            const homeTab = document.getElementById('tab-home');
-            const calendarTab = document.getElementById('tab-calendar');
-            const boardTab = document.getElementById('tab-board');
-
-            const navHome = document.getElementById('nav-home');
-            const navCalendar = document.getElementById('nav-calendar');
-            const navBoard = document.getElementById('nav-board');
-
-            homeTab.classList.add('hidden');
-            calendarTab.classList.add('hidden');
-            boardTab.classList.add('hidden');
-
-            const inactiveClass = "px-3 py-2 rounded-xl transition font-bold bg-[#1e1b4b] text-cyan-300 hover:bg-purple-900 border border-cyan-500/40 text-xs sm:text-sm";
-            const activeClass = "px-3 py-2 rounded-xl transition font-bold bg-gradient-to-r from-pink-500 to-purple-600 text-white shadow-lg neon-box-pink text-xs sm:text-sm";
-
-            navHome.className = inactiveClass;
-            navCalendar.className = inactiveClass;
-            navBoard.className = inactiveClass;
-
-            if (tabName === 'home') {
-                homeTab.classList.remove('hidden');
-                navHome.className = activeClass;
-            } else if (tabName === 'calendar') {
-                calendarTab.classList.remove('hidden');
-                navCalendar.className = activeClass;
-                window.dispatchEvent(new Event('resize'));
-            } else if (tabName === 'board') {
-                boardTab.classList.remove('hidden');
-                navBoard.className = activeClass;
-            }
-
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        let calendarInstance = null;
-
-        document.addEventListener('DOMContentLoaded', function () {
-            document.getElementById('date-input').valueAsDate = new Date();
-
-            var calendarEl = document.getElementById('calendar');
-            calendarInstance = new FullCalendar.Calendar(calendarEl, {
-                initialView: 'dayGridMonth',
-                locale: 'ja',
-                headerToolbar: {
-                    left: 'prev,next today',
-                    center: 'title',
-                    right: 'dayGridMonth,timeGridWeek'
-                },
-                events: [], // 初期状態は空（自動取得データが後から追加されます）
-                height: 500
-            });
-            calendarInstance.render();
-
-            loadPosts();
-            fetchLatestYouTubeVideo(); // YouTube最新動画の自動取得実行
-            fetchLiveSchedules();      // 配信予定の自動取得 ＆ カレンダー連動
-        });
-
-        // YouTubeのRSSから最新動画・配信情報を取得してスケジュール欄＆カレンダーに反映する関数
-        async function fetchLiveSchedules() {
-            const channelId = "UCuDpUcczF7-vZHpUYzHADTw";
-            const rssUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
-            const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(rssUrl)}`;
-            const scheduleContainer = document.getElementById('schedule-container');
-
-            try {
-                const response = await fetch(proxyUrl);
-                const data = await response.json();
-                if (!data.contents) throw new Error("スケジュールRSSの取得に失敗しました");
-
-                const parser = new DOMParser();
-                const xml = parser.parseFromString(data.contents, "text/xml");
-                const entries = xml.querySelectorAll("entry");
-
-                if (entries && entries.length > 0) {
-                    let htmlContent = "";
-                    let calendarEvents = [];
-
-                    // 上位2件を自動ピックアップ
-                    for (let i = 0; i < Math.min(2, entries.length); i++) {
-                        const entry = entries[i];
-                        const title = entry.querySelector("title")?.textContent || "YouTube配信";
-                        const published = entry.querySelector("published")?.textContent;
-                        const videoId = entry.querySelector("videoId")?.textContent;
-
-                        let dateStr = "最新情報";
-                        let isoDate = "";
-                        if (published) {
-                            const dateObj = new Date(published);
-                            dateStr = `${dateObj.getFullYear()}.${String(dateObj.getMonth() + 1).padStart(2, '0')}.${String(dateObj.getDate()).padStart(2, '0')} 公開`;
-                            isoDate = dateObj.toISOString().split('T')[0]; // カレンダー用のYYYY-MM-DD
-                        }
-
-                        // ホーム画面のリスト用HTML
-                        htmlContent += `
-                                <a href="https://www.youtube.com/watch?v=${videoId}" target="_blank" class="block p-3.5 bg-[#1e1b4b]/80 rounded-xl border border-cyan-500/30 hover:border-pink-500 transition">
-                                    <div class="flex justify-between items-center mb-1">
-                                        <span class="text-xs bg-red-500 text-white px-2 py-0.5 rounded font-black font-cyber">YouTube</span>
-                                        <span class="text-xs text-cyan-300 font-cyber">${dateStr}</span>
-                                    </div>
-                                    <p class="text-xs md:text-sm text-slate-100 font-medium truncate">${escapeHTML(title)}</p>
-                                </a>
-                            `;
-
-                        // カレンダー用イベントデータ
-                        if (isoDate) {
-                            calendarEvents.push({
-                                title: `▶ ${title}`,
-                                start: isoDate,
-                                url: `https://www.youtube.com/watch?v=${videoId}`,
-                                color: '#ff0033'
-                            });
-                        }
-                    }
-
-                    scheduleContainer.innerHTML = htmlContent;
-
-                    // カレンダーに取得したイベントを追加して再描画
-                    if (calendarInstance && calendarEvents.length > 0) {
-                        calendarInstance.addEventSource(calendarEvents);
-                    }
-                    return;
-                }
-                throw new Error("配信エントリが見つかりませんでした");
-            } catch (error) {
-                console.warn("配信予定の自動取得フォールバック発動:", error);
-                scheduleContainer.innerHTML = `
-                        <div class="p-4 bg-[#1e1b4b]/80 rounded-xl border border-cyan-500/30 text-center">
-                            <span class="text-xs bg-purple-500 text-white px-2 py-0.5 rounded font-black font-cyber mb-1 inline-block">ツイキャス / YouTube</span>
-                            <p class="text-xs text-slate-300 mt-1">現在、自動取得できる新規の配信予定はありません。</p>
-                            <a href="https://twitcasting.tv/areviafreedomch" target="_blank" class="text-xs text-cyan-400 hover:underline mt-2 inline-block">ツイキャス配信ページを確認する →</a>
-                        </div>
-                    `;
-            }
-        }
-
-        // YouTubeのRSSフィードから最新動画を自動取得する関数
-        async function fetchLatestYouTubeVideo() {
-            const channelId = "UCuDpUcczF7-vZHpUYzHADTw";
-            const rssUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
-            const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(rssUrl)}`;
-
-            const container = document.getElementById('youtube-player-container');
-            const titleElement = document.getElementById('youtube-title');
-
-            try {
-                const response = await fetch(proxyUrl);
-                const data = await response.json();
-                if (!data.contents) throw new Error("RSSの取得に失敗しました");
-
-                const parser = new DOMParser();
-                const xml = parser.parseFromString(data.contents, "text/xml");
-                const entry = xml.querySelector("entry");
-
-                if (entry) {
-                    const videoId = entry.querySelector("videoId")?.textContent;
-                    const videoTitle = entry.querySelector("title")?.textContent;
-
-                    if (videoId) {
-                        container.innerHTML = `
-                                <iframe class="w-full h-full" src="https://www.youtube.com/embed/${videoId}" title="${videoTitle}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                            `;
-                        if (videoTitle) {
-                            titleElement.textContent = videoTitle;
-                        }
-                        return;
-                    }
-                }
-                throw new Error("動画が見つかりませんでした");
-            } catch (error) {
-                console.warn("自動取得フォールバック発動:", error);
-                container.innerHTML = `
-                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/videoseries?list=UUuDpUcczF7-vZHpUYzHADTw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    `;
-                titleElement.textContent = "【最新作】チャンネルおすすめハイライト映像";
-            }
-        }
-
-        let samplePosts = [
-            { id: 1, author: 'サイバー星人', date: '2026-10-18', content: 'サイトのデザインめちゃくちゃカッコいい＆ポップで最高！配信楽しみにしてます！' },
-            { id: 2, author: 'フレンドA', date: '2026-10-17', content: '昨日のツイキャス面白かったです。お疲れ様でした〜✨' }
-        ];
-
-        function getStoredPosts() {
-            const saved = localStorage.getItem('arevia_cyber_posts');
-            return saved ? JSON.parse(saved) : samplePosts;
-        }
-
-        function savePosts(posts) {
-            localStorage.setItem('arevia_cyber_posts', JSON.stringify(posts));
-        }
-
-        function renderPosts(postsToDisplay) {
-            const container = document.getElementById('posts-container');
-            if (postsToDisplay.length === 0) {
-                container.innerHTML = `<p class="text-center text-slate-400 py-8 font-cyber">該当する投稿が見つかりませんでした。</p>`;
-                return;
-            }
-
-            container.innerHTML = postsToDisplay.map(post => `
-                    <div class="bg-[#120826]/90 p-5 rounded-2xl border border-cyan-500/30 shadow flex flex-col space-y-2">
-                        <div class="flex justify-between items-center text-xs text-slate-400 border-b border-purple-900/50 pb-2">
-                            <span class="font-bold text-cyan-300 text-sm font-cyber flex items-center"><i class="fa-solid fa-user-astronaut mr-1 text-pink-500"></i>${escapeHTML(post.author)}</span>
-                            <span class="font-cyber"><i class="fa-regular fa-calendar mr-1 text-pink-400"></i>${post.date}</span>
-                        </div>
-                        <p class="text-slate-100 text-sm whitespace-pre-wrap">${escapeHTML(post.content)}</p>
-                    </div>
-                `).join('');
-        }
-
-        document.getElementById('post-form').addEventListener('submit', function (e) {
-            e.preventDefault();
-            const author = document.getElementById('author-input').value.trim();
-            const date = document.getElementById('date-input').value;
-            const content = document.getElementById('content-input').value.trim();
-
-            if (!author || !date || !content) return;
-
-            const posts = getStoredPosts();
-            const newPost = { id: Date.now(), author, date, content };
-            posts.unshift(newPost);
-            savePosts(posts);
-
-            document.getElementById('content-input').value = '';
-            filterPosts();
-        });
-
-        function filterPosts() {
-            const keyword = document.getElementById('search-keyword').value.toLowerCase();
-            const authorQuery = document.getElementById('search-author').value.toLowerCase();
-            const dateQuery = document.getElementById('search-date').value;
-
-            const posts = getStoredPosts();
-            const filtered = posts.filter(post => {
-                const matchKeyword = !keyword || post.content.toLowerCase().includes(keyword);
-                const matchAuthor = !authorQuery || post.author.toLowerCase().includes(authorQuery);
-                const matchDate = !dateQuery || post.date === dateQuery;
-                return matchKeyword && matchAuthor && matchDate;
-            });
-
-            renderPosts(filtered);
-        }
-
-        function escapeHTML(str) {
-            return str.replace(/[&'`"<>]/g, function (match) {
-                return {
-                    '&': '&amp;',
-                    "'": '&#x27;',
-                    '`': '&#x60;',
-                    '"': '&quot;',
-                    '<': '&lt;',
-                    '>': '&gt;',
-                }[match];
-            });
-        }
-    </script>
-</body>
-</html>
+                <div class="bg-[#2b1b36]/60 p-
