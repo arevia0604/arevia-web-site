@@ -174,8 +174,9 @@
                             これまでの配信や動画の中から、特におすすめの見どころをピックアップ！
                             チャンネル登録・高評価よろしくお願いします♪
                         </p>
-                        <a href="https://www.youtube.com/channel/UCuDpUcczF7-vZHpUYzHADTw" target="_blank" class="text-[#ffd1dc] hover:underline font-bold text-sm flex items-center gap-1 w-max">
-                            YouTubeチャンネルで他の動画を見る <i class="fa-solid fa-chevron-right text-xs"></i>
+                        <!-- ここを白文字 (text-white) に変更しました -->
+                        <a href="https://www.youtube.com/channel/UCuDpUcczF7-vZHpUYzHADTw" target="_blank" class="text-white hover:underline font-bold text-sm flex items-center gap-1 w-max">
+                            YouTubeチャンネルで他の動画を見る <i class="fa-solid fa-chevron-right text-xs text-white"></i>
                         </a>
                     </div>
                 </div>
@@ -225,4 +226,290 @@
                 </form>
 
                 <!-- 検索・フィルターコントロール -->
-                <div class="bg-[#2b1b36]/60 p-
+                <div class="bg-[#2b1b36]/60 p-5 rounded-2xl border border-[#ffd1dc]/20 mb-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-[#ffd1dc] mb-1">キーワード検索</label>
+                        <input type="text" id="search-keyword" placeholder="キーワードで絞り込み..." oninput="filterPosts()" class="w-full bg-[#1a101f] border border-slate-700 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-[#ffd1dc]">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-[#ffd1dc] mb-1">ユーザー名で検索</label>
+                        <input type="text" id="search-author" placeholder="名前で絞り込み..." oninput="filterPosts()" class="w-full bg-[#1a101f] border border-slate-700 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-[#ffd1dc]">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-[#ffd1dc] mb-1">日付で検索</label>
+                        <input type="date" id="search-date" onchange="filterPosts()" class="w-full bg-[#1a101f] border border-slate-700 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-[#ffd1dc]">
+                    </div>
+                </div>
+
+                <!-- 投稿一覧表示エリア -->
+                <div id="posts-container" class="space-y-4">
+                    <!-- JavaScriptで動的生成 -->
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- フッター -->
+    <footer class="bg-[#1e1325] border-t border-[#ffd1dc]/20 py-8 text-center text-xs text-rose-200/60 font-cyber mt-12">
+        <p>&copy; 2026 アレヴィア All Rights Reserved.</p>
+    </footer>
+
+    <!-- スクリプト -->
+    <script>
+        // タブ切り替えロジック
+        function switchTab(tabName) {
+            const homeTab = document.getElementById('tab-home');
+            const calendarTab = document.getElementById('tab-calendar');
+            const boardTab = document.getElementById('tab-board');
+
+            const navHome = document.getElementById('nav-home');
+            const navCalendar = document.getElementById('nav-calendar');
+            const navBoard = document.getElementById('nav-board');
+
+            homeTab.classList.add('hidden');
+            calendarTab.classList.add('hidden');
+            boardTab.classList.add('hidden');
+
+            const inactiveClass = "px-3 py-2 rounded-xl transition font-bold bg-[#2e1c38] text-white hover:bg-[#3d254a] border border-[#ffd1dc]/30 text-xs sm:text-sm";
+            const activeClass = "px-3 py-2 rounded-xl transition font-bold bg-[#e0a3b5] text-white shadow-md text-xs sm:text-sm";
+
+            navHome.className = inactiveClass;
+            navCalendar.className = inactiveClass;
+            navBoard.className = inactiveClass;
+
+            if (tabName === 'home') {
+                homeTab.classList.remove('hidden');
+                navHome.className = activeClass;
+            } else if (tabName === 'calendar') {
+                calendarTab.classList.remove('hidden');
+                navCalendar.className = activeClass;
+                window.dispatchEvent(new Event('resize'));
+            } else if (tabName === 'board') {
+                boardTab.classList.remove('hidden');
+                navBoard.className = activeClass;
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        let calendarInstance = null;
+
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('date-input').valueAsDate = new Date();
+
+            var calendarEl = document.getElementById('calendar');
+            calendarInstance = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                locale: 'ja',
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek'
+                },
+                events: [],
+                height: 500
+            });
+            calendarInstance.render();
+
+            loadPosts();
+            fetchLatestYouTubeVideo(); // YouTube最新動画の自動取得
+            fetchLiveSchedules();      // 配信予定の自動取得 ＆ カレンダー連動
+        });
+
+        // YouTubeのRSSから最新動画・配信情報を取得してスケジュール欄＆カレンダーに反映する関数
+        async function fetchLiveSchedules() {
+            const channelId = "UCuDpUcczF7-vZHpUYzHADTw";
+            const rssUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
+            const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(rssUrl)}`;
+            const scheduleContainer = document.getElementById('schedule-container');
+
+            try {
+                const response = await fetch(proxyUrl);
+                const data = await response.json();
+                if (!data.contents) throw new Error("スケジュールRSSの取得に失敗しました");
+
+                const parser = new DOMParser();
+                const xml = parser.parseFromString(data.contents, "text/xml");
+                const entries = xml.querySelectorAll("entry");
+
+                if (entries && entries.length > 0) {
+                    let htmlContent = "";
+                    let calendarEvents = [];
+
+                    for (let i = 0; i < Math.min(2, entries.length); i++) {
+                        const entry = entries[i];
+                        const title = entry.querySelector("title")?.textContent || "YouTube配信";
+                        const published = entry.querySelector("published")?.textContent;
+                        const videoId = entry.querySelector("videoId")?.textContent;
+
+                        let dateStr = "最新情報";
+                        let isoDate = "";
+                        if (published) {
+                            const dateObj = new Date(published);
+                            dateStr = `${dateObj.getFullYear()}.${String(dateObj.getMonth() + 1).padStart(2, '0')}.${String(dateObj.getDate()).padStart(2, '0')} 公開`;
+                            isoDate = dateObj.toISOString().split('T')[0];
+                        }
+
+                        htmlContent += `
+                                <a href="https://www.youtube.com/watch?v=${videoId}" target="_blank" class="block p-3.5 bg-[#2b1b36]/80 rounded-xl border border-[#ffd1dc]/30 hover:border-[#ffd1dc] transition">
+                                    <div class="flex justify-between items-center mb-1">
+                                        <span class="text-xs bg-[#ff0033] text-white px-2 py-0.5 rounded font-black">YouTube</span>
+                                        <span class="text-xs text-[#ffd1dc] font-cyber">${dateStr}</span>
+                                    </div>
+                                    <p class="text-xs md:text-sm text-slate-100 font-medium truncate">${escapeHTML(title)}</p>
+                                </a>
+                            `;
+
+                        if (isoDate) {
+                            calendarEvents.push({
+                                title: `▶ ${title}`,
+                                start: isoDate,
+                                url: `https://www.youtube.com/watch?v=${videoId}`,
+                                color: '#e0a3b5'
+                            });
+                        }
+                    }
+
+                    scheduleContainer.innerHTML = htmlContent;
+
+                    if (calendarInstance && calendarEvents.length > 0) {
+                        calendarInstance.addEventSource(calendarEvents);
+                    }
+                    return;
+                }
+                throw new Error("配信エントリが見つかりませんでした");
+            } catch (error) {
+                console.warn("配信予定の自動取得フォールバック発動:", error);
+                scheduleContainer.innerHTML = `
+                        <div class="p-4 bg-[#2b1b36]/80 rounded-xl border border-[#ffd1dc]/30 text-center">
+                            <span class="text-xs bg-[#7c3aed] text-white px-2 py-0.5 rounded font-black mb-1 inline-block">ツイキャス / YouTube</span>
+                            <p class="text-xs text-rose-100/80 mt-1">現在、自動取得できる新規の配信予定はありません。</p>
+                            <a href="https://twitcasting.tv/areviafreedomch" target="_blank" class="text-xs text-[#ffd1dc] hover:underline mt-2 inline-block">ツイキャス配信ページを確認する →</a>
+                        </div>
+                    `;
+            }
+        }
+
+        // YouTubeのRSSフィードから最新動画を自動取得する関数
+        async function fetchLatestYouTubeVideo() {
+            const channelId = "UCuDpUcczF7-vZHpUYzHADTw";
+            const rssUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
+            const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(rssUrl)}`;
+
+            const container = document.getElementById('youtube-player-container');
+            const titleElement = document.getElementById('youtube-title');
+
+            try {
+                const response = await fetch(proxyUrl);
+                const data = await response.json();
+                if (!data.contents) throw new Error("RSSの取得に失敗しました");
+
+                const parser = new DOMParser();
+                const xml = parser.parseFromString(data.contents, "text/xml");
+                const entry = xml.querySelector("entry");
+
+                if (entry) {
+                    const videoId = entry.querySelector("videoId")?.textContent;
+                    const videoTitle = entry.querySelector("title")?.textContent;
+
+                    if (videoId) {
+                        container.innerHTML = `
+                                <iframe class="w-full h-full" src="https://www.youtube.com/embed/${videoId}" title="${videoTitle}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            `;
+                        if (videoTitle) {
+                            titleElement.textContent = videoTitle;
+                        }
+                        return;
+                    }
+                }
+                throw new Error("動画が見つかりませんでした");
+            } catch (error) {
+                console.warn("自動取得フォールバック発動:", error);
+                container.innerHTML = `
+                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/videoseries?list=UUuDpUcczF7-vZHpUYzHADTw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    `;
+                titleElement.textContent = "【最新作】チャンネルおすすめハイライト映像";
+            }
+        }
+
+        let samplePosts = [
+            { id: 1, author: 'サイバー星人', date: '2026-10-18', content: 'サイトのデザインめちゃくちゃカッコいい＆ポップで最高！配信楽しみにしてます！' },
+            { id: 2, author: 'フレンドA', date: '2026-10-17', content: '昨日のツイキャス面白かったです。お疲れ様でした〜✨' }
+        ];
+
+        function getStoredPosts() {
+            const saved = localStorage.getItem('arevia_cyber_posts');
+            return saved ? JSON.parse(saved) : samplePosts;
+        }
+
+        function savePosts(posts) {
+            localStorage.setItem('arevia_cyber_posts', JSON.stringify(posts));
+        }
+
+        function renderPosts(postsToDisplay) {
+            const container = document.getElementById('posts-container');
+            if (postsToDisplay.length === 0) {
+                container.innerHTML = `<p class="text-center text-rose-200/60 py-8 font-cyber">該当する投稿が見つかりませんでした。</p>`;
+                return;
+            }
+
+            container.innerHTML = postsToDisplay.map(post => `
+                    <div class="bg-[#1e1325]/90 p-5 rounded-2xl border border-[#ffd1dc]/30 shadow flex flex-col space-y-2">
+                        <div class="flex justify-between items-center text-xs text-rose-200/60 border-b border-[#ffd1dc]/20 pb-2">
+                            <span class="font-bold text-[#ffd1dc] text-sm flex items-center"><i class="fa-solid fa-user-astronaut mr-1 text-[#ffd1dc]"></i>${escapeHTML(post.author)}</span>
+                            <span class="font-cyber"><i class="fa-regular fa-calendar mr-1 text-[#ffd1dc]"></i>${post.date}</span>
+                        </div>
+                        <p class="text-slate-100 text-sm whitespace-pre-wrap">${escapeHTML(post.content)}</p>
+                    </div>
+                `).join('');
+        }
+
+        document.getElementById('post-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const author = document.getElementById('author-input').value.trim();
+            const date = document.getElementById('date-input').value;
+            const content = document.getElementById('content-input').value.trim();
+
+            if (!author || !date || !content) return;
+
+            const posts = getStoredPosts();
+            const newPost = { id: Date.now(), author, date, content };
+            posts.unshift(newPost);
+            savePosts(posts);
+
+            document.getElementById('content-input').value = '';
+            filterPosts();
+        });
+
+        function filterPosts() {
+            const keyword = document.getElementById('search-keyword').value.toLowerCase();
+            const authorQuery = document.getElementById('search-author').value.toLowerCase();
+            const dateQuery = document.getElementById('search-date').value;
+
+            const posts = getStoredPosts();
+            const filtered = posts.filter(post => {
+                const matchKeyword = !keyword || post.content.toLowerCase().includes(keyword);
+                const matchAuthor = !authorQuery || post.author.toLowerCase().includes(authorQuery);
+                const matchDate = !dateQuery || post.date === dateQuery;
+                return matchKeyword && matchAuthor && matchDate;
+            });
+
+            renderPosts(filtered);
+        }
+
+        function escapeHTML(str) {
+            return str.replace(/[&'`"<>]/g, function (match) {
+                return {
+                    '&': '&amp;',
+                    "'": '&#x27;',
+                    '`': '&#x60;',
+                    '"': '&#x22;',
+                    '<': '&lt;',
+                    '>': '&gt;',
+                }[match];
+            });
+        }
+    </script>
+</body>
+</html>
