@@ -311,7 +311,7 @@
             fetchLatestPost();
         });
 
-        // お知らせ自動取得
+        // お知らせ自動取得（「詳細を見る」へ変更）
         async function fetchAnnouncements() {
             const channelId = "UCuDpUcczF7-vZHpUYzHADTw";
             const rssUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
@@ -345,7 +345,7 @@
                                     <span>${dateStr}</span>
                                 </div>
                                 <p class="text-xs md:text-sm text-slate-100 font-medium">最新の動画＆配信情報が更新されました：「${escapeHTML(title)}」</p>
-                                <a href="https://www.youtube.com/watch?v=${videoId}" target="_blank" class="text-xs text-white hover:underline font-bold mt-1 inline-block">詳細を見る →</a>
+                                <a href="https://www.youtube.com/watch?v=${videoId}" target="_blank" class="text-xs text-white hover:underline font-bold mt-1 inline-block">詳細を見る</a>
                             </div>
                         `;
                     return;
@@ -402,7 +402,7 @@
             }
         }
 
-        // 動画公開・ライブ配信の両方を自動取得してスケジュール欄＆カレンダーに反映（投稿済動画も追加）
+        // 動画公開・ライブ配信の両方を自動取得してスケジュール欄＆カレンダーに反映
         async function fetchLiveSchedules() {
             const channelId = "UCuDpUcczF7-vZHpUYzHADTw";
             const rssUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
@@ -422,7 +422,6 @@
                     let htmlContent = "";
                     let calendarEvents = [];
 
-                    // 最大2件の動画・配信予定を取得して表示
                     for (let i = 0; i < Math.min(2, entries.length); i++) {
                         const entry = entries[i];
                         const title = entry.querySelector("title")?.textContent || "YouTube配信・動画";
