@@ -323,7 +323,7 @@
             }
         }
 
-        // お知らせ自動取得（サービス名バッジの色をサービスカラーに連動）
+        // お知らせ自動取得
         async function fetchAnnouncements() {
             const channelId = "UCuDpUcczF7-vZHpUYzHADTw";
             const rssUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
@@ -532,10 +532,8 @@
             }
         }
 
-        let samplePosts = [
-            { id: 1, author: 'サイバー星人', date: '2026-10-18', content: 'サイトのデザインめちゃくちゃカッコいい＆ポップで最高！配信楽しみにしてます！' },
-            { id: 2, author: 'フレンドA', date: '2026-10-17', content: '昨日のツイキャス面白かったです。お疲れ様でした〜✨' }
-        ];
+        // 初期サンプル投稿を空に設定
+        let samplePosts = [];
 
         function getStoredPosts() {
             const saved = localStorage.getItem('arevia_cyber_posts');
@@ -553,7 +551,7 @@
         function renderPosts(postsToDisplay) {
             const container = document.getElementById('posts-container');
             if (postsToDisplay.length === 0) {
-                container.innerHTML = `<p class="text-center text-rose-200/60 py-8 font-cyber">該当する投稿が見つかりませんでした。</p>`;
+                container.innerHTML = `<p class="text-center text-rose-200/60 py-8 font-cyber">まだ投稿はありません。最初のメッセージを送ってみてね♪</p>`;
                 return;
             }
 
