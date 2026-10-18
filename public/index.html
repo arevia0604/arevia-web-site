@@ -57,9 +57,9 @@
     <!-- ヘッダー / ナビゲーション -->
     <header class="bg-[#1e1325]/90 backdrop-blur-md border-b border-[#ffd1dc]/30 sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-            <!-- ネオンなしのすっきりとしたタイトル -->
+            <!-- コントローラーアイコンに変更 -->
             <h1 class="text-base sm:text-lg md:text-xl font-black tracking-wider text-[#ffd1dc] cursor-pointer flex items-center gap-2" onclick="switchTab('home')">
-                <i class="fa-solid fa-bolt text-[#ffd1dc]"></i> アレヴィアのオフィシャルサイト
+                <i class="fa-solid fa-gamepad text-[#ffd1dc]"></i> アレヴィアのオフィシャルサイト
             </h1>
             <nav class="space-x-1 sm:space-x-3">
                 <button onclick="switchTab('home')" id="nav-home" class="px-3 py-2 rounded-xl transition font-bold bg-[#e0a3b5] text-white shadow-md text-xs sm:text-sm">ホーム</button>
@@ -174,7 +174,6 @@
                             これまでの配信や動画の中から、特におすすめの見どころをピックアップ！
                             チャンネル登録・高評価よろしくお願いします♪
                         </p>
-                        <!-- ここを白文字 (text-white) に変更しました -->
                         <a href="https://www.youtube.com/channel/UCuDpUcczF7-vZHpUYzHADTw" target="_blank" class="text-white hover:underline font-bold text-sm flex items-center gap-1 w-max">
                             YouTubeチャンネルで他の動画を見る <i class="fa-solid fa-chevron-right text-xs text-white"></i>
                         </a>
@@ -504,7 +503,7 @@
                     '&': '&amp;',
                     "'": '&#x27;',
                     '`': '&#x60;',
-                    '"': '&#x22;',
+                    '"': '&quot;',
                     '<': '&lt;',
                     '>': '&gt;',
                 }[match];
