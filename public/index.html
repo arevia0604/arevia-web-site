@@ -311,7 +311,19 @@
             fetchLatestPost();
         });
 
-        // お知らせ自動取得
+        // サービス名に応じた背景色を取得するヘルパー関数
+        function getServiceBadgeColor(serviceName) {
+            switch (serviceName) {
+                case 'YouTube': return 'bg-[#ff0033]';
+                case 'TwitCasting':
+                case 'ツイキャス': return 'bg-[#9EC295]';
+                case 'X':
+                case 'Twitter': return 'bg-[#202020] border border-[#ffd1dc]/30';
+                default: return 'bg-[#e0a3b5]';
+            }
+        }
+
+        // お知らせ自動取得（サービス名バッジの色をサービスカラーに連動）
         async function fetchAnnouncements() {
             const channelId = "UCuDpUcczF7-vZHpUYzHADTw";
             const rssUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
@@ -331,6 +343,8 @@
                     const title = entry.querySelector("title")?.textContent || "新着情報";
                     const published = entry.querySelector("published")?.textContent;
                     const videoId = entry.querySelector("videoId")?.textContent;
+                    const serviceName = "YouTube";
+                    const badgeColorClass = getServiceBadgeColor(serviceName);
 
                     let dateStr = "";
                     if (published) {
@@ -341,7 +355,7 @@
                     container.innerHTML = `
                             <div class="bg-[#2b1b36]/80 p-4 rounded-2xl border border-[#ffd1dc]/20 w-full flex flex-col space-y-2">
                                 <div class="flex justify-between items-center text-xs text-[#ffd1dc]">
-                                    <span class="bg-[#e0a3b5] text-white px-2 py-0.5 rounded font-bold">YouTube</span>
+                                    <span class="${badgeColorClass} text-white px-2 py-0.5 rounded font-bold">${serviceName}</span>
                                     <span>${dateStr}</span>
                                 </div>
                                 <p class="text-xs md:text-sm text-slate-100 font-medium">最新の動画＆配信情報が更新されました：「${escapeHTML(title)}」</p>
@@ -427,6 +441,8 @@
                         const title = entry.querySelector("title")?.textContent || "YouTube配信・動画";
                         const published = entry.querySelector("published")?.textContent;
                         const videoId = entry.querySelector("videoId")?.textContent;
+                        const serviceName = "YouTube";
+                        const badgeColorClass = getServiceBadgeColor(serviceName);
 
                         let dateStr = "最新情報";
                         let isoDate = "";
@@ -439,7 +455,7 @@
                         htmlContent += `
                                 <a href="https://www.youtube.com/watch?v=${videoId}" target="_blank" class="block p-3.5 bg-[#1a101f]/70 rounded-xl border border-[#ffd1dc]/30 hover:border-[#ffd1dc] transition">
                                     <div class="flex justify-between items-center mb-1">
-                                        <span class="text-xs bg-[#ff0033] text-white px-2 py-0.5 rounded font-black">YouTube</span>
+                                        <span class="text-xs ${badgeColorClass} text-white px-2 py-0.5 rounded font-black">${serviceName}</span>
                                         <span class="text-xs text-[#ffd1dc] font-cyber">${dateStr}</span>
                                     </div>
                                     <p class="text-xs md:text-sm text-slate-100 font-medium truncate">${escapeHTML(title)}</p>
