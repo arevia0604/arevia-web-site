@@ -54,7 +54,7 @@
 </head>
 <body class="min-h-screen flex flex-col selection:bg-[#ffd1dc] selection:text-slate-900">
 
-    <!-- ヘッダー（ボタンを外しタイトルのみ） -->
+    <!-- ヘッダー（タイトルのみ） -->
     <header class="bg-[#1e1325]/95 backdrop-blur-md border-b-[3px] border-[#FEE3D7] shadow-md">
         <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
             <h1 class="text-sm sm:text-base md:text-lg font-black tracking-wider text-[#ffd1dc] cursor-pointer flex items-center gap-2" onclick="switchTab('home')">
@@ -63,208 +63,212 @@
         </div>
     </header>
 
-    <!-- メインコンテンツエリア -->
-    <main class="flex-grow max-w-6xl w-full mx-auto px-4 py-8 space-y-8">
+    <!-- メインコンテンツ ＆ 右側固定ナビゲーションのレイアウト -->
+    <main class="flex-grow max-w-6xl w-full mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-8 items-start">
 
-        <!-- 画面遷移用リスト (ナビゲーションメニュー) -->
-        <section class="bg-[#1e1325]/90 backdrop-blur p-4 sm:p-6 rounded-3xl border-[4px] border-[#FEE3D7] shadow-lg pink-box">
-            <h2 class="text-xs font-bold text-[#ffd1dc] tracking-wider mb-3 flex items-center gap-1.5 uppercase font-cyber">
-                <i class="fa-solid fa-compass text-[#ffd1dc]"></i> Navigation Menu / 画面移動
-            </h2>
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                <button onclick="switchTab('home')" id="menu-home" class="flex items-center justify-between p-3.5 rounded-2xl border-2 border-[#e0a3b5] bg-[#e0a3b5] text-white font-black text-sm transition transform hover:-translate-y-0.5 shadow-md">
-                    <span class="flex items-center gap-2"><i class="fa-solid fa-house"></i> ホーム</span>
-                    <i class="fa-solid fa-chevron-right text-xs"></i>
-                </button>
-                <button onclick="switchTab('calendar')" id="menu-calendar" class="flex items-center justify-between p-3.5 rounded-2xl border-2 border-[#2e1c38] bg-[#2e1c38] text-white font-black text-sm transition transform hover:-translate-y-0.5 hover:border-[#e0a3b5] shadow-md">
-                    <span class="flex items-center gap-2"><i class="fa-solid fa-calendar-days"></i> 配信カレンダー</span>
-                    <i class="fa-solid fa-chevron-right text-xs"></i>
-                </button>
-                <button onclick="switchTab('board')" id="menu-board" class="flex items-center justify-between p-3.5 rounded-2xl border-2 border-[#2e1c38] bg-[#2e1c38] text-white font-black text-sm transition transform hover:-translate-y-0.5 hover:border-[#e0a3b5] shadow-md">
-                    <span class="flex items-center gap-2"><i class="fa-solid fa-comments"></i> 交流掲示板</span>
-                    <i class="fa-solid fa-chevron-right text-xs"></i>
-                </button>
-            </div>
-        </section>
+            <!-- メインコンテンツエリア (3カラム分) -->
+            <div class="lg:col-span-3 space-y-8">
 
-        <!-- ================= ホームタブ ================= -->
-        <div id="tab-home" class="space-y-10">
+                <!-- ================= ホームタブ ================= -->
+                <div id="tab-home" class="space-y-10">
 
-            <!-- ヒーロー -->
-            <section class="bg-gradient-to-br from-[#2a1a33] via-[#1e1325] to-[#362042] p-6 md:p-10 rounded-3xl border-[5px] border-[#FEE3D7] shadow-xl relative overflow-hidden pink-box">
-                <div class="absolute -top-10 -left-10 w-40 h-40 bg-[#ffd1dc]/10 rounded-full blur-3xl pointer-events-none"></div>
-                <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-[#ffd1dc]/10 rounded-full blur-3xl pointer-events-none"></div>
+                    <!-- ヒーロー -->
+                    <section class="bg-gradient-to-br from-[#2a1a33] via-[#1e1325] to-[#362042] p-6 md:p-10 rounded-3xl border-[5px] border-[#FEE3D7] shadow-xl relative overflow-hidden pink-box">
+                        <div class="absolute -top-10 -left-10 w-40 h-40 bg-[#ffd1dc]/10 rounded-full blur-3xl pointer-events-none"></div>
+                        <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-[#ffd1dc]/10 rounded-full blur-3xl pointer-events-none"></div>
 
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center relative z-10">
+                        <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 items-center relative z-10">
 
-                    <!-- 左カラム：「Welcome！」＆ プロフィール ＆ SNSボタン -->
-                    <div class="text-center lg:text-left flex flex-col justify-center space-y-6">
-                        <div>
-                            <h2 class="text-3xl md:text-5xl font-black mb-2 text-[#ffd1dc] tracking-wide">
-                                Welcome！
-                            </h2>
-                            <p class="text-rose-100/90 text-sm md:text-base leading-relaxed whitespace-pre-line">
-                                配信者兼クリエイター アレヴィアのオフィシャルサイト！
-                                動画/配信に関する最新情報や交流掲示板を完備。
-                                いつでもあなたへ【楽しい】をお届けします♪
-                            </p>
+                            <!-- 左カラム：「Welcome！」＆ プロフィール ＆ SNSボタン -->
+                            <div class="text-center xl:text-left flex flex-col justify-center space-y-6">
+                                <div>
+                                    <h2 class="text-3xl md:text-5xl font-black mb-2 text-[#ffd1dc] tracking-wide">
+                                        Welcome！
+                                    </h2>
+                                    <p class="text-rose-100/90 text-sm md:text-base leading-relaxed whitespace-pre-line">
+                                        配信者兼クリエイター アレヴィアのオフィシャルサイト！
+                                        動画/配信に関する最新情報や交流掲示板を完備。
+                                        いつでもあなたへ【楽しい】をお届けします♪
+                                    </p>
+                                </div>
+
+                                <!-- SNSリンクボタン -->
+                                <div class="flex justify-center xl:justify-start gap-3 flex-wrap">
+                                    <a href="https://www.youtube.com/channel/UCuDpUcczF7-vZHpUYzHADTw" target="_blank" class="flex items-center gap-2 bg-[#ff0033] hover:bg-red-600 text-white px-5 py-3 rounded-2xl font-black text-sm border-2 border-[#ff0033] transition transform hover:-translate-y-0.5 shadow-md">
+                                        <i class="fa-brands fa-youtube text-lg text-white"></i> <span class="text-white">YouTube</span>
+                                    </a>
+                                    <a href="https://x.com/areviafreedomch" target="_blank" class="flex items-center gap-2 bg-[#202020] hover:bg-black text-white px-5 py-3 rounded-2xl font-black text-sm border-2 border-[#202020] transition transform hover:-translate-y-0.5 shadow-md">
+                                        <i class="fa-brands fa-x-twitter text-lg text-white"></i> <span class="text-white">X</span>
+                                    </a>
+                                    <a href="https://twitcasting.tv/areviafreedomch" target="_blank" class="flex items-center gap-2 bg-[#9EC295] hover:bg-[#8bb382] text-white px-5 py-3 rounded-2xl font-black text-sm border-2 border-[#9EC295] transition transform hover:-translate-y-0.5 shadow-md">
+                                        <i class="fa-solid fa-tower-broadcast text-lg text-white"></i> <span class="text-white">ツイキャス</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- 右カラム：「配信予定」 -->
+                            <div class="flex flex-col justify-center border-t xl:border-t-0 xl:border-l-[5px] border-[#FEE3D7] pt-6 xl:pt-0 xl:pl-8">
+                                <div class="flex justify-between items-center mb-4">
+                                    <h3 class="text-xl md:text-2xl font-black flex items-center text-[#ffd1dc]">
+                                        <i class="fa-solid fa-calendar-alt mr-2 text-[#ffd1dc]"></i>配信予定
+                                    </h3>
+                                    <button onclick="switchTab('calendar')" class="text-xs bg-[#e0a3b5] hover:bg-[#d48ea2] text-white font-bold px-3 py-1.5 rounded-lg border-2 border-[#e0a3b5] transition flex items-center gap-1 shadow">
+                                        <i class="fa-solid fa-calendar-days text-white"></i> <span class="text-white">カレンダーを見る</span> <i class="fa-solid fa-chevron-right text-[10px] text-white"></i>
+                                    </button>
+                                </div>
+
+                                <!-- スケジュールリスト -->
+                                <div id="schedule-container" class="space-y-3">
+                                    <div class="p-4 bg-[#1a101f]/60 rounded-xl border-[3px] border-[#FEE3D7] text-center">
+                                        <p class="text-xs text-rose-200/60 animate-pulse font-cyber">配信予定を自動取得中...</p>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
+                    </section>
 
-                        <!-- SNSリンクボタン -->
-                        <div class="flex justify-center lg:justify-start gap-3 flex-wrap">
-                            <a href="https://www.youtube.com/channel/UCuDpUcczF7-vZHpUYzHADTw" target="_blank" class="flex items-center gap-2 bg-[#ff0033] hover:bg-red-600 text-white px-5 py-3 rounded-2xl font-black text-sm border-2 border-[#ff0033] transition transform hover:-translate-y-0.5 shadow-md">
-                                <i class="fa-brands fa-youtube text-lg text-white"></i> <span class="text-white">YouTube</span>
-                            </a>
-                            <a href="https://x.com/areviafreedomch" target="_blank" class="flex items-center gap-2 bg-[#202020] hover:bg-black text-white px-5 py-3 rounded-2xl font-black text-sm border-2 border-[#202020] transition transform hover:-translate-y-0.5 shadow-md">
-                                <i class="fa-brands fa-x-twitter text-lg text-white"></i> <span class="text-white">X</span>
-                            </a>
-                            <a href="https://twitcasting.tv/areviafreedomch" target="_blank" class="flex items-center gap-2 bg-[#9EC295] hover:bg-[#8bb382] text-white px-5 py-3 rounded-2xl font-black text-sm border-2 border-[#9EC295] transition transform hover:-translate-y-0.5 shadow-md">
-                                <i class="fa-solid fa-tower-broadcast text-lg text-white"></i> <span class="text-white">ツイキャス</span>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- 右カラム：「配信予定」 -->
-                    <div class="flex flex-col justify-center border-t lg:border-t-0 lg:border-l-[5px] border-[#FEE3D7] pt-6 lg:pt-0 lg:pl-8">
-                        <div class="flex justify-between items-center mb-4">
-                            <h3 class="text-xl md:text-2xl font-black flex items-center text-[#ffd1dc]">
-                                <i class="fa-solid fa-calendar-alt mr-2 text-[#ffd1dc]"></i>配信予定
+                    <!-- お知らせ窓 ＆ 最新ポスト(X)窓 -->
+                    <section class="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+                        <!-- お知らせ窓 -->
+                        <div class="bg-[#1e1325]/80 backdrop-blur p-6 rounded-3xl border-[5px] border-[#FEE3D7] shadow-lg flex flex-col pink-box">
+                            <h3 class="text-2xl font-black mb-5 flex items-center text-[#ffd1dc]">
+                                <i class="fa-solid fa-bullhorn mr-2 text-[#ffd1dc]"></i>お知らせ
                             </h3>
-                            <button onclick="switchTab('calendar')" class="text-xs bg-[#e0a3b5] hover:bg-[#d48ea2] text-white font-bold px-3 py-1.5 rounded-lg border-2 border-[#e0a3b5] transition flex items-center gap-1 shadow">
-                                <i class="fa-solid fa-calendar-days text-white"></i> <span class="text-white">カレンダーを見る</span> <i class="fa-solid fa-chevron-right text-[10px] text-white"></i>
-                            </button>
-                        </div>
-
-                        <!-- スケジュールリスト -->
-                        <div id="schedule-container" class="space-y-3">
-                            <div class="p-4 bg-[#1a101f]/60 rounded-xl border-[3px] border-[#FEE3D7] text-center">
-                                <p class="text-xs text-rose-200/60 animate-pulse font-cyber">配信予定を自動取得中...</p>
+                            <div id="announcement-container" class="flex-grow flex items-center justify-center py-6">
+                                <p class="text-xs text-rose-200/60 animate-pulse font-cyber">お知らせを自動取得中...</p>
                             </div>
                         </div>
-                    </div>
 
-                </div>
-            </section>
-
-            <!-- お知らせ窓 ＆ 最新ポスト(X)窓 -->
-            <section class="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
-                <!-- お知らせ窓 -->
-                <div class="bg-[#1e1325]/80 backdrop-blur p-6 rounded-3xl border-[5px] border-[#FEE3D7] shadow-lg flex flex-col pink-box">
-                    <h3 class="text-2xl font-black mb-5 flex items-center text-[#ffd1dc]">
-                        <i class="fa-solid fa-bullhorn mr-2 text-[#ffd1dc]"></i>お知らせ
-                    </h3>
-                    <div id="announcement-container" class="flex-grow flex items-center justify-center py-6">
-                        <p class="text-xs text-rose-200/60 animate-pulse font-cyber">お知らせを自動取得中...</p>
-                    </div>
-                </div>
-
-                <!-- 最新X窓 -->
-                <div class="bg-[#1e1325]/80 backdrop-blur p-8 md:p-10 rounded-3xl border-[5px] border-[#FEE3D7] shadow-xl flex flex-col justify-between pink-box scale-[1.02]">
-                    <h3 class="text-3xl font-black mb-6 flex items-center text-[#ffd1dc]">
-                        <i class="fa-brands fa-x-twitter mr-3 text-[#ffd1dc]"></i>最新ポスト
-                    </h3>
-                    <div id="tweet-container" class="flex-grow flex items-center justify-center py-8">
-                        <p class="text-sm md:text-base text-rose-200/60 animate-pulse font-cyber">最新ポストを自動取得中...</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- YouTubeオススメ動画 -->
-            <section class="bg-[#1e1325]/80 backdrop-blur p-8 md:p-12 rounded-3xl border-[5px] border-[#FEE3D7] shadow-xl pink-box scale-[1.02]">
-                <h3 class="text-3xl font-black mb-8 flex items-center text-[#ffd1dc]">
-                    <i class="fa-solid fa-clapperboard mr-3 text-[#ffd1dc]"></i>おすすめ動画
-                </h3>
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-                    <div id="youtube-player-container" class="aspect-video bg-black/60 rounded-2xl overflow-hidden border-[3px] border-[#FEE3D7] flex items-center justify-center shadow-lg">
-                        <p class="text-sm text-rose-200/60 animate-pulse font-cyber">最新動画を自動読み込み中...</p>
-                    </div>
-                    <div class="flex flex-col justify-center space-y-6">
-                        <span class="text-sm bg-[#e0a3b5] text-white px-4 py-1.5 rounded-md font-black w-max shadow border-2 border-[#e0a3b5]">PICK UP</span>
-                        <h4 id="youtube-title" class="text-2xl font-black text-white leading-snug">チャンネル最新動画を自動取得中...</h4>
-                        <p class="text-base text-rose-100/90 leading-relaxed whitespace-pre-line">
-                            これまでの配信や動画の中から、特におすすめの見どころをピックアップ！
-                            <span class="text-[#ff0033] font-black">チャンネル登録・高評価</span>よろしくお願いします♪
-                        </p>
-                        <a href="https://www.youtube.com/channel/UCuDpUcczF7-vZHpUYzHADTw" target="_blank" class="text-white hover:underline font-bold text-base flex items-center gap-2 w-max">
-                            他の動画も見る
-                        </a>
-                    </div>
-                </div>
-            </section>
-
-        </div>
-
-        <!-- ================= 配信カレンダータブ ================= -->
-        <div id="tab-calendar" class="space-y-6 hidden">
-            <div class="bg-[#1e1325]/80 backdrop-blur p-6 md:p-8 rounded-3xl border-[5px] border-[#FEE3D7] shadow-lg pink-box">
-                <div class="flex justify-between items-center mb-4">
-                    <h2 class="text-3xl font-black text-[#ffd1dc] flex items-center">
-                        <i class="fa-solid fa-calendar-days mr-2 text-[#ffd1dc]"></i>配信カレンダー
-                    </h2>
-                    <button onclick="switchTab('home')" class="text-xs bg-[#e0a3b5] hover:bg-[#d48ea2] text-white font-bold px-4 py-2 rounded-xl border-2 border-[#e0a3b5] transition shadow">
-                        ← ホームへ戻る
-                    </button>
-                </div>
-                <p class="text-rose-100/80 text-sm mb-6">今後の配信予定はこちらのカレンダーからチェックしてね！</p>
-                <div id="calendar" class="bg-[#2a1a33]/60 p-4 rounded-2xl text-slate-100 text-sm border-[3px] border-[#FEE3D7]"></div>
-            </div>
-        </div>
-
-        <!-- ================= 交流掲示板タブ ================= -->
-        <div id="tab-board" class="space-y-6 hidden">
-            <div class="bg-[#1e1325]/80 backdrop-blur p-6 md:p-8 rounded-3xl border-[5px] border-[#FEE3D7] shadow-lg pink-box">
-                <div class="flex justify-between items-center mb-4">
-                    <h2 class="text-3xl font-black text-[#ffd1dc] flex items-center">
-                        <i class="fa-solid fa-comments mr-2 text-[#ffd1dc]"></i>交流掲示板
-                    </h2>
-                    <button onclick="switchTab('home')" class="text-xs bg-[#e0a3b5] hover:bg-[#d48ea2] text-white font-bold px-4 py-2 rounded-xl border-2 border-[#e0a3b5] transition shadow">
-                        ← ホームへ戻る
-                    </button>
-                </div>
-                <p class="text-rose-100/80 text-sm mb-6">自由に感想やメッセージを投稿してね！検索機能で過去ログも一発で見つかるよ♪</p>
-
-                <!-- 投稿フォーム -->
-                <form id="post-form" class="space-y-4 mb-8 bg-[#2b1b36]/80 p-6 rounded-2xl border-[3px] border-[#FEE3D7]">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-xs font-bold text-[#ffd1dc] mb-1">お名前 (ユーザー名)</label>
-                            <input type="text" id="author-input" required placeholder="例: 自由な旅人" class="w-full bg-[#1a101f] border-[3px] border-[#FEE3D7] rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-[#ffd1dc] transition">
+                        <!-- 最新X窓 -->
+                        <div class="bg-[#1e1325]/80 backdrop-blur p-8 md:p-10 rounded-3xl border-[5px] border-[#FEE3D7] shadow-xl flex flex-col justify-between pink-box">
+                            <h3 class="text-3xl font-black mb-6 flex items-center text-[#ffd1dc]">
+                                <i class="fa-brands fa-x-twitter mr-3 text-[#ffd1dc]"></i>最新ポスト
+                            </h3>
+                            <div id="tweet-container" class="flex-grow flex items-center justify-center py-8">
+                                <p class="text-sm md:text-base text-rose-200/60 animate-pulse font-cyber">最新ポストを自動取得中...</p>
+                            </div>
                         </div>
-                        <div>
-                            <label class="block text-xs font-bold text-[#ffd1dc] mb-1">日付</label>
-                            <input type="date" id="date-input" required class="w-full bg-[#1a101f] border-[3px] border-[#FEE3D7] rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-[#ffd1dc] transition">
-                        </div>
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold text-[#ffd1dc] mb-1">メッセージ内容</label>
-                        <textarea id="content-input" rows="3" required placeholder="配信の感想やメッセージをどうぞ！" class="w-full bg-[#1a101f] border-[3px] border-[#FEE3D7] rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-[#ffd1dc] transition"></textarea>
-                    </div>
-                    <button type="submit" class="bg-[#e0a3b5] hover:bg-[#d48ea2] text-white font-black px-8 py-3 rounded-xl border-[3px] border-[#e0a3b5] text-sm transition shadow-md">
-                        <i class="fa-solid fa-paper-plane mr-1 text-white"></i> <span class="text-white">投稿する！</span>
-                    </button>
-                </form>
+                    </section>
 
-                <!-- 検索・フィルターコントロール -->
-                <div class="bg-[#2b1b36]/60 p-5 rounded-2xl border-[3px] border-[#FEE3D7] mb-6 grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div>
-                        <label class="block text-xs font-bold text-[#ffd1dc] mb-1">キーワード検索</label>
-                        <input type="text" id="search-keyword" placeholder="キーワードで絞り込み..." oninput="filterPosts()" class="w-full bg-[#1a101f] border-[3px] border-[#FEE3D7] rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-[#ffd1dc]">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold text-[#ffd1dc] mb-1">ユーザー名で検索</label>
-                        <input type="text" id="search-author" placeholder="名前で絞り込み..." oninput="filterPosts()" class="w-full bg-[#1a101f] border-[3px] border-[#FEE3D7] rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-[#ffd1dc]">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold text-[#ffd1dc] mb-1">日付で検索</label>
-                        <input type="date" id="search-date" onchange="filterPosts()" class="w-full bg-[#1a101f] border-[3px] border-[#FEE3D7] rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-[#ffd1dc]">
+                    <!-- YouTubeオススメ動画 -->
+                    <section class="bg-[#1e1325]/80 backdrop-blur p-8 md:p-10 rounded-3xl border-[5px] border-[#FEE3D7] shadow-xl pink-box">
+                        <h3 class="text-3xl font-black mb-8 flex items-center text-[#ffd1dc]">
+                            <i class="fa-solid fa-clapperboard mr-3 text-[#ffd1dc]"></i>おすすめ動画
+                        </h3>
+                        <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 items-center">
+                            <div id="youtube-player-container" class="aspect-video bg-black/60 rounded-2xl overflow-hidden border-[3px] border-[#FEE3D7] flex items-center justify-center shadow-lg">
+                                <p class="text-sm text-rose-200/60 animate-pulse font-cyber">最新動画を自動読み込み中...</p>
+                            </div>
+                            <div class="flex flex-col justify-center space-y-6">
+                                <span class="text-sm bg-[#e0a3b5] text-white px-4 py-1.5 rounded-md font-black w-max shadow border-2 border-[#e0a3b5]">PICK UP</span>
+                                <h4 id="youtube-title" class="text-2xl font-black text-white leading-snug">チャンネル最新動画を自動取得中...</h4>
+                                <p class="text-base text-rose-100/90 leading-relaxed whitespace-pre-line">
+                                    これまでの配信や動画の中から、特におすすめの見どころをピックアップ！
+                                    <span class="text-[#ff0033] font-black">チャンネル登録・高評価</span>よろしくお願いします♪
+                                </p>
+                                <a href="https://www.youtube.com/channel/UCuDpUcczF7-vZHpUYzHADTw" target="_blank" class="text-white hover:underline font-bold text-base flex items-center gap-2 w-max">
+                                    他の動画も見る
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+
+                </div>
+
+                <!-- ================= 配信カレンダータブ ================= -->
+                <div id="tab-calendar" class="space-y-6 hidden">
+                    <div class="bg-[#1e1325]/80 backdrop-blur p-6 md:p-8 rounded-3xl border-[5px] border-[#FEE3D7] shadow-lg pink-box">
+                        <div class="flex justify-between items-center mb-4">
+                            <h2 class="text-3xl font-black text-[#ffd1dc] flex items-center">
+                                <i class="fa-solid fa-calendar-days mr-2 text-[#ffd1dc]"></i>配信カレンダー
+                            </h2>
+                            <button onclick="switchTab('home')" class="text-xs bg-[#e0a3b5] hover:bg-[#d48ea2] text-white font-bold px-4 py-2 rounded-xl border-2 border-[#e0a3b5] transition shadow">
+                                ← ホームへ戻る
+                            </button>
+                        </div>
+                        <p class="text-rose-100/80 text-sm mb-6">今後の配信予定はこちらのカレンダーからチェックしてね！</p>
+                        <div id="calendar" class="bg-[#2a1a33]/60 p-4 rounded-2xl text-slate-100 text-sm border-[3px] border-[#FEE3D7]"></div>
                     </div>
                 </div>
 
-                <!-- 投稿一覧 -->
-                <div id="posts-container" class="space-y-4"></div>
-            </div>
-        </div>
+                <!-- ================= 交流掲示板タブ ================= -->
+                <div id="tab-board" class="space-y-6 hidden">
+                    <div class="bg-[#1e1325]/80 backdrop-blur p-6 md:p-8 rounded-3xl border-[5px] border-[#FEE3D7] shadow-lg pink-box">
+                        <div class="flex justify-between items-center mb-4">
+                            <h2 class="text-3xl font-black text-[#ffd1dc] flex items-center">
+                                <i class="fa-solid fa-comments mr-2 text-[#ffd1dc]"></i>交流掲示板
+                            </h2>
+                            <button onclick="switchTab('home')" class="text-xs bg-[#e0a3b5] hover:bg-[#d48ea2] text-white font-bold px-4 py-2 rounded-xl border-2 border-[#e0a3b5] transition shadow">
+                                ← ホームへ戻る
+                            </button>
+                        </div>
+                        <p class="text-rose-100/80 text-sm mb-6">自由に感想やメッセージを投稿してね！検索機能で過去ログも一発で見つかるよ♪</p>
 
+                        <!-- 投稿フォーム -->
+                        <form id="post-form" class="space-y-4 mb-8 bg-[#2b1b36]/80 p-6 rounded-2xl border-[3px] border-[#FEE3D7]">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-bold text-[#ffd1dc] mb-1">お名前 (ユーザー名)</label>
+                                    <input type="text" id="author-input" required placeholder="例: 自由な旅人" class="w-full bg-[#1a101f] border-[3px] border-[#FEE3D7] rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-[#ffd1dc] transition">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-[#ffd1dc] mb-1">日付</label>
+                                    <input type="date" id="date-input" required class="w-full bg-[#1a101f] border-[3px] border-[#FEE3D7] rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-[#ffd1dc] transition">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-[#ffd1dc] mb-1">メッセージ内容</label>
+                                <textarea id="content-input" rows="3" required placeholder="配信の感想やメッセージをどうぞ！" class="w-full bg-[#1a101f] border-[3px] border-[#FEE3D7] rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-[#ffd1dc] transition"></textarea>
+                            </div>
+                            <button type="submit" class="bg-[#e0a3b5] hover:bg-[#d48ea2] text-white font-black px-8 py-3 rounded-xl border-[3px] border-[#e0a3b5] text-sm transition shadow-md">
+                                <i class="fa-solid fa-paper-plane mr-1 text-white"></i> <span class="text-white">投稿する！</span>
+                            </button>
+                        </form>
+
+                        <!-- 検索・フィルターコントロール -->
+                        <div class="bg-[#2b1b36]/60 p-5 rounded-2xl border-[3px] border-[#FEE3D7] mb-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-[#ffd1dc] mb-1">キーワード検索</label>
+                                <input type="text" id="search-keyword" placeholder="キーワードで絞り込み..." oninput="filterPosts()" class="w-full bg-[#1a101f] border-[3px] border-[#FEE3D7] rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-[#ffd1dc]">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-[#ffd1dc] mb-1">ユーザー名で検索</label>
+                                <input type="text" id="search-author" placeholder="名前で絞り込み..." oninput="filterPosts()" class="w-full bg-[#1a101f] border-[3px] border-[#FEE3D7] rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-[#ffd1dc]">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-[#ffd1dc] mb-1">日付で検索</label>
+                                <input type="date" id="search-date" onchange="filterPosts()" class="w-full bg-[#1a101f] border-[3px] border-[#FEE3D7] rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-[#ffd1dc]">
+                            </div>
+                        </div>
+
+                        <!-- 投稿一覧 -->
+                        <div id="posts-container" class="space-y-4"></div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- 右側固定（sticky）画面遷移リスト (1カラム分 / 見出し文字なし) -->
+            <aside class="lg:col-span-1 sticky top-6 z-40">
+                <div class="bg-[#1e1325]/90 backdrop-blur p-4 rounded-3xl border-[4px] border-[#FEE3D7] shadow-xl pink-box flex flex-col gap-3">
+                    <button onclick="switchTab('home')" id="menu-home" class="flex items-center justify-between p-3.5 rounded-2xl border-2 border-[#e0a3b5] bg-[#e0a3b5] text-white font-black text-sm transition transform hover:-translate-y-0.5 shadow-md w-full">
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-house"></i> ホーム</span>
+                        <i class="fa-solid fa-chevron-right text-xs"></i>
+                    </button>
+                    <button onclick="switchTab('calendar')" id="menu-calendar" class="flex items-center justify-between p-3.5 rounded-2xl border-2 border-[#2e1c38] bg-[#2e1c38] text-white font-black text-sm transition transform hover:-translate-y-0.5 hover:border-[#e0a3b5] shadow-md w-full">
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-calendar-days"></i> 配信カレンダー</span>
+                        <i class="fa-solid fa-chevron-right text-xs"></i>
+                    </button>
+                    <button onclick="switchTab('board')" id="menu-board" class="flex items-center justify-between p-3.5 rounded-2xl border-2 border-[#2e1c38] bg-[#2e1c38] text-white font-black text-sm transition transform hover:-translate-y-0.5 hover:border-[#e0a3b5] shadow-md w-full">
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-comments"></i> 交流掲示板</span>
+                        <i class="fa-solid fa-chevron-right text-xs"></i>
+                    </button>
+                </div>
+            </aside>
+
+        </div>
     </main>
 
     <!-- フッター -->
@@ -287,8 +291,8 @@
             calendarTab.classList.add('hidden');
             boardTab.classList.add('hidden');
 
-            const inactiveStyle = "flex items-center justify-between p-3.5 rounded-2xl border-2 border-[#2e1c38] bg-[#2e1c38] text-white font-black text-sm transition transform hover:-translate-y-0.5 hover:border-[#e0a3b5] shadow-md";
-            const activeStyle = "flex items-center justify-between p-3.5 rounded-2xl border-2 border-[#e0a3b5] bg-[#e0a3b5] text-white font-black text-sm transition transform hover:-translate-y-0.5 shadow-md";
+            const inactiveStyle = "flex items-center justify-between p-3.5 rounded-2xl border-2 border-[#2e1c38] bg-[#2e1c38] text-white font-black text-sm transition transform hover:-translate-y-0.5 hover:border-[#e0a3b5] shadow-md w-full";
+            const activeStyle = "flex items-center justify-between p-3.5 rounded-2xl border-2 border-[#e0a3b5] bg-[#e0a3b5] text-white font-black text-sm transition transform hover:-translate-y-0.5 shadow-md w-full";
 
             menuHome.className = inactiveStyle;
             menuCalendar.className = inactiveStyle;
