@@ -54,7 +54,7 @@
 </head>
 <body class="min-h-screen flex flex-col selection:bg-[#ffd1dc] selection:text-slate-900">
 
-    <!-- ヘッダー / ナビゲーション（画面上に固定表示 sticky top-0） -->
+    <!-- ヘッダー / ナビゲーション（画面上部に常時固定表示） -->
     <header class="bg-[#1e1325]/95 backdrop-blur-md border-b-[3px] border-[#FEE3D7] sticky top-0 z-50 shadow-md">
         <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
             <h1 class="text-sm sm:text-base md:text-lg font-black tracking-wider text-[#ffd1dc] cursor-pointer flex items-center gap-2" onclick="switchTab('home')">
@@ -81,7 +81,7 @@
         <!-- ================= ホームタブ ================= -->
         <div id="tab-home" class="space-y-10">
 
-            <!-- ヒーロー / 枠線 #FEE3D7 -->
+            <!-- ヒーロー -->
             <section class="bg-gradient-to-br from-[#2a1a33] via-[#1e1325] to-[#362042] p-6 md:p-10 rounded-3xl border-[5px] border-[#FEE3D7] shadow-xl relative overflow-hidden pink-box">
                 <div class="absolute -top-10 -left-10 w-40 h-40 bg-[#ffd1dc]/10 rounded-full blur-3xl pointer-events-none"></div>
                 <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-[#ffd1dc]/10 rounded-full blur-3xl pointer-events-none"></div>
@@ -91,10 +91,11 @@
                     <!-- 左カラム：「Welcome！」＆ プロフィール ＆ SNSボタン -->
                     <div class="text-center lg:text-left flex flex-col justify-center space-y-6">
                         <div>
-                            <!-- Welcome！と下のテキスト間のスペースを1/2 (mb-2) に -->
+                            <!-- スペースを1/2 (mb-2) に調整 -->
                             <h2 class="text-3xl md:text-5xl font-black mb-2 text-[#ffd1dc] tracking-wide">
                                 Welcome！
                             </h2>
+                            <!-- 文言更新 -->
                             <p class="text-rose-100/90 text-sm md:text-base leading-relaxed whitespace-pre-line">
                                 配信者兼クリエイター アレヴィアのオフィシャルサイト！
                                 動画/配信に関する最新情報や交流掲示板を完備。
@@ -102,7 +103,7 @@
                             </p>
                         </div>
 
-                        <!-- SNSリンクボタン（各ボタン枠線を中の色と一致） -->
+                        <!-- SNSリンクボタン（ボタン枠線を内部色に統一） -->
                         <div class="flex justify-center lg:justify-start gap-3 flex-wrap">
                             <a href="https://www.youtube.com/channel/UCuDpUcczF7-vZHpUYzHADTw" target="_blank" class="flex items-center gap-2 bg-[#ff0033] hover:bg-red-600 text-white px-5 py-3 rounded-2xl font-black text-sm border-2 border-[#ff0033] transition transform hover:-translate-y-0.5 shadow-md">
                                 <i class="fa-brands fa-youtube text-lg text-white"></i> <span class="text-white">YouTube</span>
@@ -127,7 +128,7 @@
                             </button>
                         </div>
 
-                        <!-- 自動取得した配信・投稿済動画リスト -->
+                        <!-- スケジュールリスト -->
                         <div id="schedule-container" class="space-y-3">
                             <div class="p-4 bg-[#1a101f]/60 rounded-xl border-[3px] border-[#FEE3D7] text-center">
                                 <p class="text-xs text-rose-200/60 animate-pulse font-cyber">配信予定を自動取得中...</p>
@@ -173,6 +174,7 @@
                     <div class="flex flex-col justify-center space-y-6">
                         <span class="text-sm bg-[#e0a3b5] text-white px-4 py-1.5 rounded-md font-black w-max shadow border-2 border-[#e0a3b5]">PICK UP</span>
                         <h4 id="youtube-title" class="text-2xl font-black text-white leading-snug">チャンネル最新動画を自動取得中...</h4>
+                        <!-- 「チャンネル登録・高評価」を赤色へ -->
                         <p class="text-base text-rose-100/90 leading-relaxed whitespace-pre-line">
                             これまでの配信や動画の中から、特におすすめの見どころをピックアップ！
                             <span class="text-[#ff0033] font-black">チャンネル登録・高評価</span>よろしくお願いします♪
@@ -242,10 +244,8 @@
                     </div>
                 </div>
 
-                <!-- 投稿一覧表示エリア -->
-                <div id="posts-container" class="space-y-4">
-                    <!-- JavaScriptで動的生成 -->
-                </div>
+                <!-- 投稿一覧 -->
+                <div id="posts-container" class="space-y-4"></div>
             </div>
         </div>
 
@@ -310,7 +310,6 @@
             fetchLatestPost();
         });
 
-        // サービス名に応じた背景色を取得するヘルパー関数（枠線も各色に連動）
         function getServiceBadgeColor(serviceName) {
             switch (serviceName) {
                 case 'YouTube': return 'bg-[#ff0033] border-2 border-[#ff0033]';
@@ -322,7 +321,6 @@
             }
         }
 
-        // お知らせ自動取得
         async function fetchAnnouncements() {
             const channelId = "UCuDpUcczF7-vZHpUYzHADTw";
             const rssUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
@@ -373,7 +371,6 @@
             }
         }
 
-        // 最新ポスト（X）の自動取得
         async function fetchLatestPost() {
             const channelId = "UCuDpUcczF7-vZHpUYzHADTw";
             const rssUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
@@ -415,7 +412,6 @@
             }
         }
 
-        // 動画公開・ライブ配信の両方を自動取得してスケジュール欄＆カレンダーに反映
         async function fetchLiveSchedules() {
             const channelId = "UCuDpUcczF7-vZHpUYzHADTw";
             const rssUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
@@ -490,7 +486,6 @@
             }
         }
 
-        // YouTubeおすすめ動画取得
         async function fetchLatestYouTubeVideo() {
             const channelId = "UCuDpUcczF7-vZHpUYzHADTw";
             const rssUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
