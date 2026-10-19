@@ -54,12 +54,17 @@
 </head>
 <body class="min-h-screen flex flex-col selection:bg-[#ffd1dc] selection:text-slate-900">
 
-    <!-- ヘッダー / ナビゲーション（固定表示を解除） -->
+    <!-- ヘッダー / ナビゲーションボタン -->
     <header class="bg-[#1e1325]/95 backdrop-blur-md border-b-[3px] border-[#FEE3D7] shadow-md">
         <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
             <h1 class="text-sm sm:text-base md:text-lg font-black tracking-wider text-[#ffd1dc] cursor-pointer flex items-center gap-2" onclick="switchTab('home')">
                 <i class="fa-solid fa-gamepad text-[#ffd1dc]"></i> アレヴィアのオフィシャルサイト
             </h1>
+            <nav class="space-x-1 sm:space-x-2">
+                <button onclick="switchTab('home')" id="nav-home" class="px-3 py-1.5 rounded-xl transition font-bold bg-[#e0a3b5] text-white shadow-md text-xs sm:text-sm border-2 border-[#e0a3b5]">ホーム</button>
+                <button onclick="switchTab('calendar')" id="nav-calendar" class="px-3 py-1.5 rounded-xl transition font-bold bg-[#2e1c38] text-white hover:bg-[#3d254a] border-2 border-[#2e1c38] text-xs sm:text-sm">カレンダー</button>
+                <button onclick="switchTab('board')" id="nav-board" class="px-3 py-1.5 rounded-xl transition font-bold bg-[#2e1c38] text-white hover:bg-[#3d254a] border-2 border-[#2e1c38] text-xs sm:text-sm">交流掲示板</button>
+            </nav>
         </div>
     </header>
 
@@ -171,11 +176,35 @@
                 </div>
             </section>
 
-            <!-- 交流掲示板セクション -->
-            <section class="bg-[#1e1325]/80 backdrop-blur p-6 md:p-8 rounded-3xl border-[5px] border-[#FEE3D7] shadow-lg pink-box">
-                <h2 class="text-3xl font-black mb-2 text-[#ffd1dc] flex items-center">
-                    <i class="fa-solid fa-comments mr-2 text-[#ffd1dc]"></i>交流掲示板
-                </h2>
+        </div>
+
+        <!-- ================= 配信カレンダータブ ================= -->
+        <div id="tab-calendar" class="space-y-6 hidden">
+            <div class="bg-[#1e1325]/80 backdrop-blur p-6 md:p-8 rounded-3xl border-[5px] border-[#FEE3D7] shadow-lg pink-box">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-3xl font-black text-[#ffd1dc] flex items-center">
+                        <i class="fa-solid fa-calendar-days mr-2 text-[#ffd1dc]"></i>配信カレンダー
+                    </h2>
+                    <button onclick="switchTab('home')" class="text-xs bg-[#e0a3b5] hover:bg-[#d48ea2] text-white font-bold px-4 py-2 rounded-xl border-2 border-[#e0a3b5] transition shadow">
+                        ← ホームへ戻る
+                    </button>
+                </div>
+                <p class="text-rose-100/80 text-sm mb-6">今後の配信予定はこちらのカレンダーからチェックしてね！</p>
+                <div id="calendar" class="bg-[#2a1a33]/60 p-4 rounded-2xl text-slate-100 text-sm border-[3px] border-[#FEE3D7]"></div>
+            </div>
+        </div>
+
+        <!-- ================= 交流掲示板タブ（独立ページ） ================= -->
+        <div id="tab-board" class="space-y-6 hidden">
+            <div class="bg-[#1e1325]/80 backdrop-blur p-6 md:p-8 rounded-3xl border-[5px] border-[#FEE3D7] shadow-lg pink-box">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-3xl font-black text-[#ffd1dc] flex items-center">
+                        <i class="fa-solid fa-comments mr-2 text-[#ffd1dc]"></i>交流掲示板
+                    </h2>
+                    <button onclick="switchTab('home')" class="text-xs bg-[#e0a3b5] hover:bg-[#d48ea2] text-white font-bold px-4 py-2 rounded-xl border-2 border-[#e0a3b5] transition shadow">
+                        ← ホームへ戻る
+                    </button>
+                </div>
                 <p class="text-rose-100/80 text-sm mb-6">自由に感想やメッセージを投稿してね！検索機能で過去ログも一発で見つかるよ♪</p>
 
                 <!-- 投稿フォーム -->
@@ -217,23 +246,6 @@
 
                 <!-- 投稿一覧 -->
                 <div id="posts-container" class="space-y-4"></div>
-            </section>
-
-        </div>
-
-        <!-- ================= 配信カレンダータブ ================= -->
-        <div id="tab-calendar" class="space-y-6 hidden">
-            <div class="bg-[#1e1325]/80 backdrop-blur p-6 md:p-8 rounded-3xl border-[5px] border-[#FEE3D7] shadow-lg pink-box">
-                <div class="flex justify-between items-center mb-4">
-                    <h2 class="text-3xl font-black text-[#ffd1dc] flex items-center">
-                        <i class="fa-solid fa-calendar-days mr-2 text-[#ffd1dc]"></i>配信カレンダー
-                    </h2>
-                    <button onclick="switchTab('home')" class="text-xs bg-[#e0a3b5] hover:bg-[#d48ea2] text-white font-bold px-4 py-2 rounded-xl border-2 border-[#e0a3b5] transition shadow">
-                        ← ホームへ戻る
-                    </button>
-                </div>
-                <p class="text-rose-100/80 text-sm mb-6">今後の配信予定はこちらのカレンダーからチェックしてね！</p>
-                <div id="calendar" class="bg-[#2a1a33]/60 p-4 rounded-2xl text-slate-100 text-sm border-[3px] border-[#FEE3D7]"></div>
             </div>
         </div>
 
@@ -249,15 +261,33 @@
         function switchTab(tabName) {
             const homeTab = document.getElementById('tab-home');
             const calendarTab = document.getElementById('tab-calendar');
+            const boardTab = document.getElementById('tab-board');
+
+            const navHome = document.getElementById('nav-home');
+            const navCalendar = document.getElementById('nav-calendar');
+            const navBoard = document.getElementById('nav-board');
 
             homeTab.classList.add('hidden');
             calendarTab.classList.add('hidden');
+            boardTab.classList.add('hidden');
+
+            const inactiveClass = "px-3 py-1.5 rounded-xl transition font-bold bg-[#2e1c38] text-white hover:bg-[#3d254a] border-2 border-[#2e1c38] text-xs sm:text-sm";
+            const activeClass = "px-3 py-1.5 rounded-xl transition font-bold bg-[#e0a3b5] text-white shadow-md text-xs sm:text-sm border-2 border-[#e0a3b5]";
+
+            navHome.className = inactiveClass;
+            navCalendar.className = inactiveClass;
+            navBoard.className = inactiveClass;
 
             if (tabName === 'home') {
                 homeTab.classList.remove('hidden');
+                navHome.className = activeClass;
             } else if (tabName === 'calendar') {
                 calendarTab.classList.remove('hidden');
+                navCalendar.className = activeClass;
                 window.dispatchEvent(new Event('resize'));
+            } else if (tabName === 'board') {
+                boardTab.classList.remove('hidden');
+                navBoard.className = activeClass;
             }
 
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -577,7 +607,7 @@
                     '&': '&amp;',
                     "'": '&#x27;',
                     '`': '&#x60;',
-                    '"': '&quot;',
+                    '"': '&#34;',
                     '<': '&lt;',
                     '>': '&gt;',
                 }[match];
