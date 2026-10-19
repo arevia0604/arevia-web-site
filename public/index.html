@@ -54,22 +54,38 @@
 </head>
 <body class="min-h-screen flex flex-col selection:bg-[#ffd1dc] selection:text-slate-900">
 
-    <!-- ヘッダー / ナビゲーションボタン -->
+    <!-- ヘッダー（ボタンを外しタイトルのみ） -->
     <header class="bg-[#1e1325]/95 backdrop-blur-md border-b-[3px] border-[#FEE3D7] shadow-md">
         <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
             <h1 class="text-sm sm:text-base md:text-lg font-black tracking-wider text-[#ffd1dc] cursor-pointer flex items-center gap-2" onclick="switchTab('home')">
                 <i class="fa-solid fa-gamepad text-[#ffd1dc]"></i> アレヴィアのオフィシャルサイト
             </h1>
-            <nav class="space-x-1 sm:space-x-2">
-                <button onclick="switchTab('home')" id="nav-home" class="px-3 py-1.5 rounded-xl transition font-bold bg-[#e0a3b5] text-white shadow-md text-xs sm:text-sm border-2 border-[#e0a3b5]">ホーム</button>
-                <button onclick="switchTab('calendar')" id="nav-calendar" class="px-3 py-1.5 rounded-xl transition font-bold bg-[#2e1c38] text-white hover:bg-[#3d254a] border-2 border-[#2e1c38] text-xs sm:text-sm">カレンダー</button>
-                <button onclick="switchTab('board')" id="nav-board" class="px-3 py-1.5 rounded-xl transition font-bold bg-[#2e1c38] text-white hover:bg-[#3d254a] border-2 border-[#2e1c38] text-xs sm:text-sm">交流掲示板</button>
-            </nav>
         </div>
     </header>
 
     <!-- メインコンテンツエリア -->
-    <main class="flex-grow max-w-6xl w-full mx-auto px-4 py-8">
+    <main class="flex-grow max-w-6xl w-full mx-auto px-4 py-8 space-y-8">
+
+        <!-- 画面遷移用リスト (ナビゲーションメニュー) -->
+        <section class="bg-[#1e1325]/90 backdrop-blur p-4 sm:p-6 rounded-3xl border-[4px] border-[#FEE3D7] shadow-lg pink-box">
+            <h2 class="text-xs font-bold text-[#ffd1dc] tracking-wider mb-3 flex items-center gap-1.5 uppercase font-cyber">
+                <i class="fa-solid fa-compass text-[#ffd1dc]"></i> Navigation Menu / 画面移動
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <button onclick="switchTab('home')" id="menu-home" class="flex items-center justify-between p-3.5 rounded-2xl border-2 border-[#e0a3b5] bg-[#e0a3b5] text-white font-black text-sm transition transform hover:-translate-y-0.5 shadow-md">
+                    <span class="flex items-center gap-2"><i class="fa-solid fa-house"></i> ホーム</span>
+                    <i class="fa-solid fa-chevron-right text-xs"></i>
+                </button>
+                <button onclick="switchTab('calendar')" id="menu-calendar" class="flex items-center justify-between p-3.5 rounded-2xl border-2 border-[#2e1c38] bg-[#2e1c38] text-white font-black text-sm transition transform hover:-translate-y-0.5 hover:border-[#e0a3b5] shadow-md">
+                    <span class="flex items-center gap-2"><i class="fa-solid fa-calendar-days"></i> 配信カレンダー</span>
+                    <i class="fa-solid fa-chevron-right text-xs"></i>
+                </button>
+                <button onclick="switchTab('board')" id="menu-board" class="flex items-center justify-between p-3.5 rounded-2xl border-2 border-[#2e1c38] bg-[#2e1c38] text-white font-black text-sm transition transform hover:-translate-y-0.5 hover:border-[#e0a3b5] shadow-md">
+                    <span class="flex items-center gap-2"><i class="fa-solid fa-comments"></i> 交流掲示板</span>
+                    <i class="fa-solid fa-chevron-right text-xs"></i>
+                </button>
+            </div>
+        </section>
 
         <!-- ================= ホームタブ ================= -->
         <div id="tab-home" class="space-y-10">
@@ -194,7 +210,7 @@
             </div>
         </div>
 
-        <!-- ================= 交流掲示板タブ（独立ページ） ================= -->
+        <!-- ================= 交流掲示板タブ ================= -->
         <div id="tab-board" class="space-y-6 hidden">
             <div class="bg-[#1e1325]/80 backdrop-blur p-6 md:p-8 rounded-3xl border-[5px] border-[#FEE3D7] shadow-lg pink-box">
                 <div class="flex justify-between items-center mb-4">
@@ -263,31 +279,31 @@
             const calendarTab = document.getElementById('tab-calendar');
             const boardTab = document.getElementById('tab-board');
 
-            const navHome = document.getElementById('nav-home');
-            const navCalendar = document.getElementById('nav-calendar');
-            const navBoard = document.getElementById('nav-board');
+            const menuHome = document.getElementById('menu-home');
+            const menuCalendar = document.getElementById('menu-calendar');
+            const menuBoard = document.getElementById('menu-board');
 
             homeTab.classList.add('hidden');
             calendarTab.classList.add('hidden');
             boardTab.classList.add('hidden');
 
-            const inactiveClass = "px-3 py-1.5 rounded-xl transition font-bold bg-[#2e1c38] text-white hover:bg-[#3d254a] border-2 border-[#2e1c38] text-xs sm:text-sm";
-            const activeClass = "px-3 py-1.5 rounded-xl transition font-bold bg-[#e0a3b5] text-white shadow-md text-xs sm:text-sm border-2 border-[#e0a3b5]";
+            const inactiveStyle = "flex items-center justify-between p-3.5 rounded-2xl border-2 border-[#2e1c38] bg-[#2e1c38] text-white font-black text-sm transition transform hover:-translate-y-0.5 hover:border-[#e0a3b5] shadow-md";
+            const activeStyle = "flex items-center justify-between p-3.5 rounded-2xl border-2 border-[#e0a3b5] bg-[#e0a3b5] text-white font-black text-sm transition transform hover:-translate-y-0.5 shadow-md";
 
-            navHome.className = inactiveClass;
-            navCalendar.className = inactiveClass;
-            navBoard.className = inactiveClass;
+            menuHome.className = inactiveStyle;
+            menuCalendar.className = inactiveStyle;
+            menuBoard.className = inactiveStyle;
 
             if (tabName === 'home') {
                 homeTab.classList.remove('hidden');
-                navHome.className = activeClass;
+                menuHome.className = activeStyle;
             } else if (tabName === 'calendar') {
                 calendarTab.classList.remove('hidden');
-                navCalendar.className = activeClass;
+                menuCalendar.className = activeStyle;
                 window.dispatchEvent(new Event('resize'));
             } else if (tabName === 'board') {
                 boardTab.classList.remove('hidden');
-                navBoard.className = activeClass;
+                menuBoard.className = activeStyle;
             }
 
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -607,7 +623,7 @@
                     '&': '&amp;',
                     "'": '&#x27;',
                     '`': '&#x60;',
-                    '"': '&#34;',
+                    '"': '&quot;',
                     '<': '&lt;',
                     '>': '&gt;',
                 }[match];
